@@ -1,0 +1,157 @@
+/* Cabeçalho */
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    background-color: var(--cor--primaria);
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 1);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    height: 30%;
+    width: 25%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: black;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-bottom: 20px;
+    transform-origin: center;
+}
+
+.dropdown li {
+    width: 150px;
+}
+
+.dropdown li a {
+    padding: 10px;
+}
+
+/* .dropdown .sub-item {
+    gap: 20px;
+} */
+
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+nav ul li a:hover {
+    color: var(--cor--secundaria);
+    cursor: pointer;
+}
+
+.b {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.b a {
+    margin-left: 40px;
+}
+
+.b a button {
+    padding: 10px;
+    width: 120px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: var(--cor--button);
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+.b a button:hover {
+    transform: scale(1.1);
+    background-color: var(--cor--secundaria);
+    cursor: pointer;
+}
+
+/* Form calculadora */
+
+
+.container {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    height: 60vh;
+    width: 30%;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px #515151;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.content form label {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.content input {
+    font-size: 1rem;
+    padding: 10px 10px 10px 5px;
+    /* display: block; */
+    /* width: 200px; */
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+}
+
