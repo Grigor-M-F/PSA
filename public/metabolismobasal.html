@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang=Altura"en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../public/css/global.css">
     <title>Calculadora do Metabolismo Bsal</title>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -37,43 +39,83 @@
             </a>
         </div>
     </header>
-    <div class="container">
-        <div class="card">
-            <div class="title">
-                <h1>Calculadora do Metabolismo Basal</h1>
+    <main>
+        <section class="container">
+            <div class="info">
+                <h1>O que é?</h1>
+                <p>A taxa metabólica basal, também conhecida como gasto energético basal, é a quantidade de energia que
+                    um
+                    corpo, em repouso, gasta para manter as suas funções vitais, como respiração, batimentos do coração
+                    e
+                    manutenção da temperatura corporal. Os valores da taxa metabólica basal variam de acordo com a
+                    idade,
+                    peso e sexo, e serve para entender o total de energia que um corpo gasta por dia, sendo uma
+                    ferramenta
+                    útil para auxiliar no planejamento alimentar de pessoas que desejam manter o peso, quem busca o
+                    emagrecimento, perda de gordura, engordar.</p>
+                <p class="titulo">Logo abaixo temos uma calculadora de metabolismo basal, onde você poderá simular seu
+                    gasto
+                    calórico diário</p>
             </div>
-            <div class="content">
-                <form>
-                    <label>Sexo</label>
-                    <span><input type="checkbox" id="iptSexo_F"> Feminino</span>
-                    <span><input type="checkbox" id="iptSexo_M">
-                    Masculino</span>
+            <div class="card">
+                <div class="title">
+                    <h1>Calculadora do Metabolismo Basal</h1>
+                </div>
+                <div class="content">
+                    <form>
+                        <div>
+                            <label>Sexo</label>
+                            <span><input type="checkbox" id="iptSexo_F"> Feminino</span>
+                            <span><input type="checkbox" id="iptSexo_M">
+                                Masculino</span>
+                        </div>
+                        <div>
+                            <label>Biotipo</label>
+                            <span><input type="checkbox" id="iptBiotipo_Ecto">
+                                Ectomorfo</span>
+                            <span><input type="checkbox" id="iptBiotipo_Meso">
+                                Mesomorfo</span>
+                            <span><input type="checkbox" id="iptBiotipo_Endo">
+                                Endomorfo</span>
+                        </div>
+                        <div>
+                            <label>Altura</label>
+                            <input type="number" id="iptAltura">
 
-                    <label>Biotipo</label>
-                    <span><input type="checkbox" id="iptBiotipo_Ecto">
-                    Ectomorfo</span>
-                    <span><input type="checkbox" id="iptBiotipo_Meso">
-                    Mesomorfo</span>
-                    <span><input type="checkbox" id="iptBiotipo_Endo">
-                    Endomorfo</span>
+                            <label>Peso</label>
+                            <input type="text" id="iptPeso">
 
-                    <label>Altura</label>
-                    <input type="number" id="iptAltura">
+                            <label>idade</label>
+                            <input type="number" id="iptIdade">
 
-                    <label>Peso</label>
-                    <input type="text" id="iptPeso">
+                            <label>Taxa Metabólica Basal</label>
+                            <div class="reposta">
 
-                    <label>idade</label>
-                    <input type="number" id="iptIdade">
-
-                    <label>Taxa Metabólica Basal</label>
-                    <div class="reposta">
-
-                    </div>
-                </form>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
-    
+            <footer>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="../public/index.html">Home</a></li>
+                        <li><a href="">News</a></li>
+                        <li><a href="">Alimentação</a></li>
+                    </ul>
+                </nav>
+                <div class="contato">
+                    <span>Contato</span>
+                    <img src="../public/assets/icons/facebook.png" alt="">
+                    <img src="../public/assets/icons/instagrampsa.png" alt="">
+                    <img src="../public/assets/icons/linkedin.png" alt="">
+                </div>
+            </footer>
+        </section>
+        <section class="rodape">
+            
+        </section>
+    </main>
 </body>
+
 </html>

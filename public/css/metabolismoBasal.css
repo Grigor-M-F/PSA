@@ -1,13 +1,20 @@
 /* Cabeçalho */
 
+body {
+    height: 100dvh;
+    width: 100%;
+    /* overflow: hidden; */
+}
+
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    height: 100px;
     width: 100%;
     background-color: var(--cor--primaria);
     box-shadow: 0 5px 5px rgba(255, 255, 255, 1);
+    /* position: fixed; */
 }
 
 .logo {
@@ -62,7 +69,7 @@ nav ul li a {
     gap: 20px;
 } */
 
-nav ul li:hover .dropdown {
+header nav ul li:hover .dropdown {
     display: block;
 }
 
@@ -101,32 +108,72 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
+
+main {
+    height: calc(100dvh - 100px);
+    padding-top: 100px;
+}
+
 /* Form calculadora */
 
 
 .container {
-    height: 80vh;
+    padding-top: 50px;
+    height: calc(100dvh - 100px);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 60%;
+    height: 50%;
+    padding: 40px;
+    margin: 50px 30px 30px 30px;
+}
+
+.info h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.info >.titulo p {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 40px;
+}
+
+.info p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    overflow-wrap: break-word;
+}
+
+
 .card {
-    height: 60vh;
+    height: 90%;
     width: 30%;
     border-radius: 20px;
     box-shadow: 0 2px 5px #515151;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     padding: 40px;
 }
 
-.title {
+.title h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 1.6rem;
 }
 
 .content {
@@ -141,6 +188,7 @@ nav ul li a:hover {
 }
 
 .content form label {
+    font-size: 1.3rem;
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -155,3 +203,49 @@ nav ul li a:hover {
     background: transparent;
 }
 
+.content div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+
+}
+
+/* footer */
+
+.rodape {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    margin-top: 40px;
+    background-color: var(--cor--secundaria);
+}
+
+footer nav ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+
+footer nav ul li:hover {
+    color: #7dbdf5;
+}
+
+footer .contato {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 30px;
+}

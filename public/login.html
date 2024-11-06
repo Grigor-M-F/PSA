@@ -4,32 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="../public/css/logintest.css">
     <link rel="stylesheet" href="../public/css/global.css">
-    <title>Psa</title>
+    <link rel="shortcut icon" href="../public/assets/img/imgMedicina.png" type="image/png">
+    <title>Login</title>
 </head>
 
 <body>
-    <main>
-        <div class="container">
-            <div class="invi"></div>
-            <div class="container-card">
-                <div class="card">
-                    <Label class="title">
-                        Email:
-                    </Label>
-                    <input type="text" id="iptEmail">
-                    <label class="title">
-                        Senha:
-                    </label>
-                    <input type="text" id="iptSenha">
+    <div class="container">
+        <div class="form-img">
+        </div>
+        <div class="form">
+            <form>
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Acesse a nossa página</h1>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <div class="form-control">
+                            <input type="value" required="" id="iptEmail">
+                            <label>
+                                <span style="transition-delay: 0ms;">E</span><span style="transition-delay: 50ms;">m</span><span style="transition-delay: 100ms;">a</span><span style="transition-delay: 150ms;">i</span><span style="transition-delay: 200ms;">l</span>
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <input type="password" required="" id="iptSenha">
+                            <label>
+                                <span style="transition-delay: 0ms;">S</span><span style="transition-delay: 50ms;">e</span><span style="transition-delay: 100ms;">n</span><span style="transition-delay: 150ms;">h</span><span style="transition-delay: 200ms;">a</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="button">
-                    <button onclick="validar()" class="b">Entrar</button>
+                    <button><a href="#">Entrar</a></button>
                 </div>
-            </div>
+            </form>
         </div>
-    </main>
+    </div>
 </body>
 
 </html>
