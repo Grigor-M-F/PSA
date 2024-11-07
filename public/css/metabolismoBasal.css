@@ -90,7 +90,6 @@ nav ul li a:hover {
 }
 
 .b a button {
-    padding: 10px;
     width: 120px;
     height: 30px;
     border: none;
@@ -98,7 +97,6 @@ nav ul li a:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--cor--button);
     font-weight: 600;
-    text-align: center;
     transition: all 0.5s;
 }
 
@@ -210,6 +208,23 @@ main {
     flex-direction: column;
     padding: 10px;
 
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 25px;
+    margin-top: 8px;
+    background-color: #7dbdf5;
+    font-weight: 700;
+    padding: 5px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: var(--cor--secundaria);
+    transform: scale(1.1);
 }
 
 /* footer */
