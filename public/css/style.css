@@ -133,7 +133,7 @@ main {
     margin: 10px;
     padding: 20px;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 600;
 }
 
@@ -143,7 +143,7 @@ main {
 }
 .text p{
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
@@ -154,11 +154,11 @@ main {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 600px;
+    height: 80vh;
 }
 
 .card {
-    width: 400px;
+    width: 500px;
     aspect-ratio: 1 / 1;
     border-radius: 8px;
     position: relative;
@@ -203,6 +203,15 @@ main {
     opacity: 0;
 
 }
+
+.content-card h2 {
+    font-size: 1.7rem;
+}
+
+.content-card p {
+    font-size: 1.3rem;
+}
+
 .card:hover > .content-card{
     opacity: 1;
 }
@@ -211,12 +220,13 @@ main {
 
 .section-esporte{
     width: 100%;
-    height: 750px;
+    height: 80vh;
 }
 .titulo h2{
     text-align: center;
     font-size: 1.6rem;
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 .container{
     display: flex;
@@ -225,11 +235,77 @@ main {
     margin-top: 30px;
 }
 
+.card-esportes {
+    width: 600px;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.card-esportes .img-esportes {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.card-esportes .img-esportes img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 90%;
+    border-radius: inherit;
+    transition: 0.5s ease-in-out;
+}
+
+.card-esportes::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid black;
+    border-radius: inherit;
+    opacity: 0;
+    transition: 0.4 ease-in-out;
+}
+
+.card-esportes:hover img {
+    filter: blur(10px);
+}
+
+.card-esportes:hover::after {
+    opacity: 1;
+    inset: 20px;
+}
+
+.content-cardEsporte {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    color: white;
+}
+
+.content-cardEsporte h2 {
+    font-size: 1.7rem;
+}
+
+.content-cardEsporte p {
+    font-size: 1.3rem;
+}
+
+.card-esportes:hover > .content-cardEsporte {
+    opacity: 1;
+}
+
 /* Quem somos */
 
 .quem-somos{
     width: 100%;
-    height: 600px;
+    height: 80vh;
 }
 
 .content-psa{
@@ -331,7 +407,7 @@ footer nav ul{
 }
 
 footer nav ul li:hover{
-    color: #7dbdf5;
+    color: var(--cor--primaria);
 }
 
 footer .contato{
