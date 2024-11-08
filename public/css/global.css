@@ -14,4 +14,5 @@
     --cor--primaria: #DBEDFD;
     --cor--secundaria: #C4DDAD;
     --cor--button: #9CC9F1;
+    --heigth-section: calc((100vh - 100px) -2px)
 }
