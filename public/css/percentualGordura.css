@@ -1,7 +1,7 @@
 header {
     height: 100px;
     width: 100%;
-    background: var(--cor--primaria);
+    background-color: var(--cor--primaria);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,6 @@ nav ul li a {
     font-weight: bold;
     font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
     display: block;
     color: black;
 }
@@ -43,7 +42,16 @@ nav ul li a {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0%;
+    left: 0;
+    margin-bottom: 20px;
+    transform-origin: center;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
     margin-bottom: 20px;
     transform-origin: center;
 }
@@ -76,7 +84,7 @@ ul li ul:hover {
     opacity: 1;
     display: block;
     min-width: 250px;
-    text-align: center;
+    text-align: left;
     padding-top: 20px;
     border-radius: 20px;
     box-shadow: 0px 3px 5px -1px #ccc;
@@ -86,17 +94,12 @@ a {
     text-decoration: none;
 }
 
-a .icone:hover {
+a .icon:hover {
     color: #839ef5;
 }
 
-nav ul li:hover .dropdown{
+nav ul li:hover .dropdown {
     display: block;
-}
-
-nav ul li a:hover {
-    color: #839ef5;
-    cursor: pointer;
 }
 
 .b {
@@ -119,7 +122,7 @@ nav ul li a:hover {
     background-color: var(--cor--button);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     font-weight: 600;
-    transition: all 0.4s;
+    transition: all 0.5s;
 }
 
 .b a button:hover {
@@ -128,82 +131,5 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-.news {
-    width: 100%;
-    height: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-}
-
-.content .frase-news {
-    width: 25%;
-    height: 60%;
-}
-
-.content .frase-news h1 {
-    font-size: 3rem;
-}
-
-.img-news {
-    width: 50%;
-    height: 100%;
-}
-
-.img-news img {
-    width: 100%;
-    height: 100%;
-
-}
-
-
-.search {
-    width: 100%;
-    height: 900px;
-    display: flex;
-    justify-content: center;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    width: 300px;
-    margin-top: 30px;
-    padding: 10px;
-    border-radius: 20px;
-    background: #96c8f7;
-    box-shadow: 0px 3px 5px #ccc;
-}
-
-.search-txt {
-    border: none;
-    background: none;
-    outline: none;
-    color: black;
-    font-size: 1rem;
-    background: transparent;
-}
-
-.search-box img {
-    width: 40px;
-    height: 40px;
-}
-
-.output-search {
-    width: 100%;
-    height: 900px;
-    display: flex;
-    align-items: center;
-}
 
