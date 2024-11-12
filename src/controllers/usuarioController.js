@@ -57,8 +57,9 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var fkEmpresa = req.body.idEmpresaVincularServer;
+    var telefone = req.body.telefoneServer;
     var cpf = req.body.cpfServer;
+    var data = req.body.dtNascServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -67,11 +68,13 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
+    } else if (telefone == undefined) {
+        res.status(400).send("Sua telefone a vincular está undefined!");
     } else if (cpf == undefined) {
         res.status(400).send("Seu CPF está undefined!");
-    } 
+    } else if (data == undefined) {
+        res.status(400).send("Sua data de nascimento está undefined!")
+    }
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
