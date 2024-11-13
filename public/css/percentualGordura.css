@@ -133,11 +133,11 @@ nav ul li:hover .dropdown {
 
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 1500px;
+    height: 500px;
 }
 
 .info {
@@ -146,14 +146,17 @@ nav ul li:hover .dropdown {
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    height: 500px;
+    height: 300px;
 }
 
 .info h1 {
+    /* margin-top: 40px; */
     font-size: 3rem;
+    margin-bottom: 40px;
 }
 
 .info P {
+    margin-bottom: 40px;
     font-size: 1.6rem;
     font-weight: 600;
     word-break: break-all;

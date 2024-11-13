@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #6c63ff;
+    background: var(--cor--primaria);
 }
 
 .container {
@@ -18,10 +18,7 @@ body {
     width: 50%;
     background-image: url(../assets/img/fundo_cadastro.jpg);
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+    padding: 15px;
 }
 
 .form {
@@ -30,7 +27,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: var(--cor--secundaria);
+    background-color: #d1ebb9;
     padding: 3rem;
 }
 
@@ -41,7 +38,7 @@ body {
 }
 
 .title h1 {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
 .form-header h1::after {
@@ -69,22 +66,23 @@ body {
 }
 
 .input-box input{
-    margin: 10px 0;
+    /* margin: 10px 0; */
     padding: 12px 170px;
     border: none;
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
 }
 
-.input-box .form-control label{
-    transform: translateY(-50px);
+.form-control {
+    display: flex;
+    flex-direction: column;
 }
 
 .button button {
     width: 100%;
     margin-top: 20px;
     border: none;
-    background-color: #6c63ff;
+    background-color: var(--cor--button);
     padding: 12px;
     border-radius: 5px;
 }

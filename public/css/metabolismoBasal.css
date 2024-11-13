@@ -1,7 +1,7 @@
 /* Cabeçalho */
 
 body {
-    height: 100dvh;
+    height: 100vh;
     width: 100%;
 }
 
@@ -145,7 +145,7 @@ nav ul li a:hover {
 
 
 /* main {
-    height: 80vh;
+    height: var(--heigth-section);
     padding-top: 100px;
 } */
 
@@ -153,8 +153,8 @@ nav ul li a:hover {
 
 
 .container {
-    padding-top: 50px;
-    height: 100%;
+    /* padding-top: 50px; */
+    height: var(--heigth-section);
     width: 100%;
     display: flex;
     align-items: center;
@@ -171,7 +171,7 @@ nav ul li a:hover {
     width: 60%;
     height: 50%;
     padding: 40px;
-    margin: 50px 30px 30px 30px;
+    margin: 20px 30px 30px 30px;
 }
 
 .info h1 {
@@ -236,14 +236,29 @@ nav ul li a:hover {
     background: transparent;
 }
 
+.content form select {
+    border-radius: 20px;
+    /* border: none; */
+
+}
+
 .content div {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-
 }
+
+.content form div .input-lado {
+    transform: translate(25px, -40px);
+}
+
+/* div #resposta {
+    border: 1px solid;
+    outline: solid #000;
+    
+} */
 
 button {
     border: none;
@@ -290,6 +305,7 @@ footer nav ul li {
     margin-right: 30px;
 }
 
+
 footer nav ul li a:hover {
     color: #839ef5;
 }
@@ -299,4 +315,13 @@ footer .contato {
     justify-content: space-around;
     align-items: center;
     margin-left: 30px;
+}
+
+footer .contato span {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+footer .contato img {
+    margin-left: 6px;
 }
