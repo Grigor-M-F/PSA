@@ -70,3 +70,39 @@
 </body>
 
 </html>
+
+<script>
+    function search() {
+        var searchVar = iptSearch.value;
+
+        var output = document.getElementsByClassName('output')
+
+        if (searchVar == "") {
+            output.innerHTML = `Erro, A pesuisa não pode ser vazia.`
+            return;
+        }
+
+        fetch("/news/search", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                searchServer: searchVar
+            }),
+        })
+            .then(function(response) {
+                console.log("Resposta: ", response);
+
+                if (response.ok) {
+                    output.innerHTML = 
+                    "Iniciando pesquisa..."
+                } else {
+                    throw "Ocorreu um erro ao iniciar a pesquisa!" 
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+</script>
