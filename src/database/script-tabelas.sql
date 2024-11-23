@@ -36,3 +36,23 @@ fkUser int,
 constraint fkUserFale foreign key (fkUser)
 references cadastro (idUser)
 );
+
+CREATE TABLE if not exists questionario (
+	idQuest int primary key auto_increment,
+	lesao TINYINT,
+	qtd_Lesoe INT,
+	uf CHAR(2),
+	cidade VARCHAR(100),
+	fkUsuario int,
+	CONSTRAINT fkUserQuest FOREIGN KEY (fkUsuario) REFERENCES cadastro (idUser)
+);
+
+
+CREATE TABLE if not exists mensagem (
+	fkUser int,
+	fkMedico int,
+	PRIMARY KEY(fkUser, fkMedico),
+	dtEnvio TIMESTAMP,
+	dtRecebimento TIMESTAMP,
+	mensagem TEXT
+);
