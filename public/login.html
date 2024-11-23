@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/login.css">
-    <link rel="stylesheet" href="../public/css/global.css">
-    <link rel="shortcut icon" href="../public/assets/img/imgMedicina.png" type="image/png">
-    <title>Login</title>
+
+    <title>PSA  Login</title>
+
+    <!-- <script src="./js/sessao.js"></script> -->
+
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="shortcut icon" href="./assets/imgs/imgMedicina.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -43,33 +49,30 @@
                                     style="transition-delay: 200ms;">a</span>
                             </label>
                         </div>
-                    </div>
+                    </div>  
                 </div>
                 <div class="button">
-                    <button onclick="entrar()">Entrar</button>
+                    <button onclick="autenticar()">Entrar</button>
                 </div>
             </form>
         </div>
     </div>
+
 </body>
 
 </html>
 
 <script>
-        function entrar() {
-        aguardar();
+
+
+    function autenticar() {
 
         var emailVar = iptEmail.value;
         var senhaVar = iptSenha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
+            alert("Os campos não podem estar vazios!")
+            return;
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -85,7 +88,7 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+            console.log("ESTOU NO THEN DO autentificar()!")
 
             if (resposta.ok) {
                 console.log(resposta);
@@ -96,29 +99,20 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-                    sessionStorage.CPF_USUARIO = json.cpf;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
+                        window.location = "./dashboard/dashboard.html";
+                    }, 1000);
 
                 });
 
             } else {
-
                 console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
             }
 
         }).catch(function (erro) {
             console.log(erro);
         })
-
-        return false;
     }
+
 </script>

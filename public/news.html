@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="../public/assets/img/imgMedicina.png" type="image/png">
-    <link rel="stylesheet" href="../public/css/global.css">
-    <link rel="stylesheet" href="../public/css/news.css">
+    <link rel="shortcut icon" href="./assets/imgs/imgMedicina.png" type="image/png">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/news.css">
     <title>News</title>
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <a href="../public/index.html">
-                <img src="../public/assets/img/imgMedicina.png" alt="imagem símbolo da medicina">
+            <a href="./index.html">
+                <img src="./assets/imgs/imgMedicina.png" alt="imagem símbolo da medicina">
             </a>
         </div>
         <nav>
             <ul>
-                <li><a href="../public/news.html">News</a></li>
+                <li><a href="./news.html">News</a></li>
                 <li><a href="#">Calculadora<span class="icon">&dtrif;</span></a>
                     <ul class="dropdown">
-                        <li class="sub-item"><a href="../public/metabolismobasal.html">Metabolismo Basal</a></li>
+                        <li class="sub-item"><a href="../public/calculadoraMacro.html">Dieta Flexível</a></li>
                         <li class="sub-item"><a href="">Macronutrientes</a></li>
                         <li class="sub-item"><a href="../public/percentualGordura.html">Percentual de gordura
                                 Corporal</a></li>
@@ -33,10 +33,10 @@
             </ul>
         </nav>
         <div class="b">
-            <a href="../public/cadastro.html">
+            <a href="./cadastro.html">
                 <button>Cadastro</button>
             </a>
-            <a href="../public/login.html">
+            <a href="./login.html">
                 <button>Login</button>
             </a>
         </div>
@@ -48,14 +48,14 @@
                     <h1>Navegue entre as nossas notícias e para mais informações acesse os links de refência.</h1>
                 </div>
                 <div class="img-news">
-                    <img src="../public/assets/img/News_outro.jpg" alt="imagem de uma pessoa lendo jornal">
+                    <img src="./assets/imgs/News_outro.jpg" alt="imagem de uma pessoa lendo jornal">
                 </div>
             </div>
         </section>
         <section class="search">
             <div class="search-box">
                 <input type="text" class="search-txt" placeholder="Pesquisar" id="iptSearch" oninput="search()">
-                <img src="../public/assets/icons/icons8-pesquisar.svg" alt="Ícone de pesquisa">
+                <img src="./assets/icon/icons8-pesquisar.svg" alt="Ícone de pesquisa">
             </div>
         </section>
         <section class="output-search">
@@ -82,7 +82,7 @@
             return;
         }
 
-        fetch("/news/search", {
+        fetch("http://localhost:3333/usuarios/news", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -90,19 +90,16 @@
             body: JSON.stringify({
                 searchServer: searchVar
             }),
-        })
-            .then(function(response) {
-                console.log("Resposta: ", response);
+        }).then(function(response) {
+               response.json().then(response =>{
+                    console.log(response)
+               })
 
-                if (response.ok) {
-                    output.innerHTML = 
-                    "Iniciando pesquisa..."
-                } else {
-                    throw "Ocorreu um erro ao iniciar a pesquisa!" 
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+                
+        })
+           
     }
+
+
+    
 </script>

@@ -1,208 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../public/assets/img/imgMedicina.png" type="image/png">
-    <link rel="stylesheet" href="../public/css/global.css">
-    <link rel="stylesheet" href="../public/css/cadastrar.css">
-    <title>Cadastro PSA</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Psa - Cadastro</title>
+
+  <!-- <script src="./js/sessao.js"></script> -->
+
+  <link rel="stylesheet" href="./css/cadastro.css">
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="shortcut icon" href="./assets/imgs/imgMedicina.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
 </head>
 
-<body onload="listar()">
-    <div class="container">
-        <div class="form-img">
-        </div>
-        <div class="form">
-            <form>
-                <div class="form-header">
-                    <div class="title">
-                        <h1>Preencha todos os campos para acessar nossa Dashboard</h1>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <div class="input-box">
-                        <div class="form-control">
-                            <label>Nome Completo:</label>
-                            <input type="text" oninput="validar()" id="iptNome" placeholder="Insira seu nome">
-                            <span id="erro"></span>
-                        </div>
-                    <div class="input-box">
-                        <div class="form-control">
-                            <label>Email:</label>
-                            <input type="text" oninput="valiar()" id="iptEmail" placeholder="Insira seu Email">
-                            <span id="erro"></span>
-                        </div>
-                    </div>    
-                    <div class="input-box">
-                        <div class="form-control">
-                            <label>Data de Nascimento:</label>
-                            <input type="date" oninput="validar()" id="iptData"
-                                placeholder="Selecione sua data de Nascimento">
-                            <span id="erro"></span>
-                        </div>
-                    </div>
-                    <div class="input-box">
-                        <div class="form-control">
-                            <label>CPF:</label>
-                            <input type="number" oninput="validar()" id="iptCpf" placeholder="Insira seu CPF">
-                            <span id="erro"></span>
-                        </div>
-                    </div>
-                    <div class="input-box">
-                        <div class="form-control">
-                            <label>Telefone:</label>
-                            <input type="number" oninput="validar()" id="iptTelefone" placeholder="Insira seu Telefone">
-                            <span id="erro"></span>
-                        </div>
-                    </div>
-                    <div class="input-box">
-                        <div class="form-control">
-                            <label>Senha:</label>
-                            <input type="password" oninput="validar()" id="iptSenha" placeholder="Insira sua Senha">
-                            <span id="erro"></span>
-                        </div>
-                    </div>
-                    <div class="input-box">
-                        <div class="form-control">
-                            <label>Confirmar Senha:</label>
-                            <input type="password" oninput="validar()" id="iptSenhaConfirm"
-                                placeholder="Repita a senha">
-                            <span id="erro"></span>
-                        </div>
-                    </div>
-                        <div class="button">
-                            <a href="">
-                                <button onclick="cadastrar()">Cadastrar</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+<!-- <body onload="listar()"> -->
+
+<body>
+  <div class="container">
+    <div class="form-img">
     </div>
+    <div class="form">
+      <form>
+        <div class="form-header">
+          <div class="title">
+            <h1>Preencha todos os campos para acessar nossa Dashboard</h1>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-box">
+            <div class="form-control">
+              <label>Nome Completo:</label>
+              <input type="text" oninput="validar()" id="iptNome" placeholder="Insira seu nome">
+              <span id="erroNome"></span>
+            </div>
+            <div class="input-box">
+              <div class="form-control">
+                <label>Email:</label>
+                <input type="text" oninput="validar()" id="iptEmail" placeholder="Insira seu Email">
+                <span id="erroEmail"></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <div class="form-control">
+                <label>Data de Nascimento:</label>
+                <input type="date" oninput="validar()" id="iptData" placeholder="Selecione sua data de Nascimento">
+                <span id="erroData"></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <div class="form-control">
+                <label>CPF:</label>
+                <input type="number" oninput="validar()" id="iptCpf" placeholder="Insira seu CPF">
+                <span id="erroCPF"></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <div class="form-control">
+                <label>Telefone:</label>
+                <input type="number" oninput="validar()" id="iptTelefone" placeholder="Insira seu Telefone">
+                <span id="erroTelefone"></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <div class="form-control">
+                <label>Senha:</label>
+                <input type="password" oninput="validar()" id="iptSenha" placeholder="Insira sua Senha">
+                <span id="erroSenha"></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <div class="form-control">
+                <label>Confirmar Senha:</label>
+                <input type="new-password" oninput="validar()" id="iptSenhaConfirm" placeholder="Repita a senha">
+                <span id="erroConfirmSenha"></span>
+              </div>
+            </div>
+            <div class="button">
+              <a href="">
+                <button onclick="cadastrar()">Cadastrar</button>
+              </a>
+              <span id="error" style="display: none;"></span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 
 </html>
 
 <script>
-    var char = ['@', '#', '$', '%', '&', '*', '?', 'ª', 'º', '§']
-    var password = false;
 
-    function validar() {
-        var nome = iptNome.toLowerCase.value;
-        var email = iptEmail.value;
-        var dtNasc = iptData.value;
-        var cpf = Number(iptCpf.value);
-        var telefone = Number(iptTelefone.value);
-        var senha = iptSenha.value;
-        var confirmSenha = iptSenhaConfirm.value;
 
-        var erro = document.getElementById("erro");
+  function charEspecial(userText) {
+    var charEspec = `"!@#$%^&*()_+-={}[]|\\:"';<>,./?`;
+    for (var i = 0; i < userText.length; i++) {
+      if (charEspec.includes(userText[i])) {
+        return true;
+      }
+    }
+  }
 
-        for (var i = 0; i < char.length; i++) {
-            if (senha.includes(char[i])) {
-                password = true;
-            }
-        }
+  function validar() {
+    var nomeVar = iptNome.value.trim();
+    var emailVar = iptEmail.value.trim();
+    var dtNascVar = iptData.value.trim();
+    var cpfVar = iptCpf.value.trim();
+    var telefoneVar = iptTelefone.value.trim();
+    var senhaVar = iptSenha.value.trim();
+    var confirmSenhaVar = iptSenhaConfirm.value.trim();
 
-        if (nome.includes(" ") == false) {
-            erro.innerHTML = `<span style="color: red;">Seu nome não é composto</span>`;
-            return;
-        } else if (email.includes("@") == false || email.includes(".") == false) {
-            erro.innerHTML = `<span style="color: red;">Não possuí @ ou dominio</span>`;
-            return;
-        } else if (dtNasc) {
+    var erro = document.getElementById("erro");
 
-        } else if (cpf.length != 11 || cpf == NaN) {
-            erro.innerHTML = `<span style="color: red;">Só pode inserir onze números e aceita apenas números</span>`;
-            return;
-        } else if (telefone.length != 11 || telefone == NaN) {
-            erro.innerHTML = `<span style="color: red;">Telefone tem que ter 11 digitos e só pode ser número</span>`;
-            return;
-        } else if (senha.length < 8 || password) {
-            erro.innerHTML = `<span style="color: red;">Senha menor que 8 digitos e não contém caracter especial</span>`;
-            return;
-        } else if (senha != confirmSenha) {
-            erro.innerHTML = `<span style="color: red;">Confirmação de senha diferente da senha do campo anterior.</span>`;
-            return;
-        }
-
-        if (nome == "" ||
-            email == "" ||
-            dtNasc == "" ||
-            cpf == "" ||
-            telefone == "" ||
-            senha == "" ||
-            confirmSenha == ""
-        ) {
-            erro.innerHTML = `<span style="color: red;">Não pode deixar campos vazios</span>`; 
-        }
-
+    if (nomeVar == "" ||
+      emailVar == "" ||
+      dtNascVar == "" ||
+      cpfVar == "" ||
+      telefoneVar == "" ||
+      senhaVar == "" ||
+      confirmSenhaVar == ""
+    ) {
+      error.innerHTML = `<span style="color: red;">Todos os campos são obrigatórios</span>`;
     }
 
-    function cadastrar() {
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nomeServer: nome,
-                emailServer: email,
-                dtNascServer: dtNasc,
-                cpfServer: cpf,
-                telefoneServer: telefone,
-                senhaServer: senha
-            }),
-        })
 
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    cardErro.style.display = "block";
-
-                    mensagem_erro.innerHTML =
-                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
-
-                    limparFormulario();
-                    finalizarAguardar();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
-            });
-
-        return false;
+    if (!nomeVar.includes(" ")) {
+      erroNome.innerHTML = `<span style="color: red;">Seu nome não é composto</span>`;
+    } else {
+      erroNome.innerHTML = `<span style="color: red; display: none;">Seu nome não é composto</span>`;
     }
 
-    // Listando empresas cadastradas 
-    function listar() {
-        fetch("/empresas/listar", {
-            method: "GET",
-        })
-            .then(function (resposta) {
-                resposta.json().then((empresas) => {
-                    empresas.forEach((empresa) => {
-                        listaEmpresasCadastradas.push(empresa);
-
-                        console.log("listaEmpresasCadastradas")
-                        console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-                    });
-                });
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+    if (!emailVar.includes("@") || !emailVar.includes(".")) {
+      erroEmail.innerHTML = `<span style="color: red;">Não possuí @ ou dominio</span>`;
+    } else {
+      erroEmail.innerHTML = `<span style="color: red; display: none;"></span>`;
     }
 
+    if (dtNascVar == "") {
+      erroData.innerHTML = `<span style="color: red;">Esse campo não pode ser vazio</span>`
+    } else {
+      erroData.innerHTML = `<span style="color: red; display: none;"></span>`;
+    }
+
+    if (cpfVar.length != 11) {
+      erroCPF.innerHTML = `<span style="color: red;">Só pode inserir onze números e aceita apenas números</span>`;
+    } else {
+      erroCPF.innerHTML = `<span style="color: red; display: none;"></span>`;
+    }
+
+    if (telefoneVar.length != 11) {
+      erroTelefone.innerHTML = `<span style="color: red;">Telefone tem que ter 11 digitos e só pode ser número</span>`;
+    } else {
+      erroTelefone.innerHTML = `<span style="color: red; display: none;"></span>`;
+    }
+
+
+    if (senhaVar.length < 8 || !charEspecial(senhaVar)) {
+      erroSenha.innerHTML = `<span style="color: red;">Senha menor que 8 digitos e não contém caracter especial</span>`;
+    } else {
+      erroSenha.innerHTML = `<span style="color: red; display: none;"></span>`;
+    }
+
+    if (senhaVar != confirmSenhaVar) {
+      erroConfirmSenha.innerHTML = `<span style="color: red;">Confirmação de senha diferente da senha do campo anterior.</span>`;
+    } else {
+      erroConfirmSenha.innerHTML = `<span style="color: red; display: none;">Seu nome não é composto</span>`;
+    }
+
+  }
+
+  function cadastrar() {
+    var nomeVar = iptNome.value;
+    var emailVar = iptEmail.value;
+    var dtNascVar = iptData.value;
+    var cpfVar = iptCpf.value;
+    var telefoneVar = iptTelefone.value;
+    var senhaVar = iptSenha.value;
+    var confirmacaoSenhaVar = iptSenhaConfirm.value;
+
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        dtNascServer: dtNascVar,
+        cpfServer: cpfVar,
+        telefoneServer: telefoneVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          alert("Cadastro realizado com sucesso! Aguarde que você será direcionado para a página de login...");
+
+          setTimeout(() => {
+            window.location = "http://localhost:3333/login.html?";
+          }, "2000");
+        } else {
+          alert("Ocorreu um erro ao realizar o cadastro, tente novamente!");
+          throw "Houve um erro tentando realizar o cadastro!"
+        }
+      })
+
+  }
 </script>

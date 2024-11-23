@@ -1,62 +1,38 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+CREATE DATABASE psa;
 
-/*
-comandos para mysql server
-*/
+USE psa;
 
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
+CREATE TABLE if not exists cadastro(
+idUser int primary key auto_increment,
+nome varchar(45) not null,
+email varchar(60) not null,
+cpf char(11) not null,
+dtNasc date not null,
+telefone char(11) not null,
+senha varchar(20)
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+
+SELECT idUser, nome, email FROM cadastro WHERE email = 'test@hotmail.com' AND senha = 'Git012@#$';
+
+SELECT * FROM cadastro;
+
+DELETE FROM cadastro WHERE idUser = 2;
+UPDATE cadastro SET senha = 'Git012@#$' WHERE idUser = 3;
+
+CREATE TABLE if not exists data_frame (
+idData_frame int primary key auto_increment,
+title varchar(100),
+descr text,
+url varchar(200));
+
+CREATE TABLE if not exists fale_conosco (
+idFale_conosco int primary key auto_increment,
+nome varchar(45),
+email varchar(60),
+descricao text,
+data_fale date,
+fkUser int,
+constraint fkUserFale foreign key (fkUser)
+references cadastro (idUser)
 );
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);

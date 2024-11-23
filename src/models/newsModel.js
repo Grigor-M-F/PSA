@@ -1,14 +1,25 @@
-var database = require("../database/configNews");
+var database = require("../database/config");
 
-function search(title, descr, url) {
+function search() {
     console.log("Certo!");
     var instrucaoSQL= `
-    INSERT INTO data_frame (title, desc, url) VALUES ('${title}', '${descr}', '${url}')`;
-    
+    SELECT title AS 'Título',
+            descr AS 'Descrição', 
+            url AS URL  
+            FROM data_frame;
+            `;
     return database.executar(instrucaoSQL);
+}
 
+function insert(title, descr, url){
+    console.log("Certo!");
+    var instrucaoSQL = `
+    INSERT INTO data_frame (title, descr, url) VALUES ('${title}', '${descr}', '${url}');`;
+
+    return database.executar(instrucaoSQL);
 }
 
 module.exports = {
-    search
+    search,
+    insert
 };

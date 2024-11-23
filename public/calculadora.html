@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang=Altura"en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/imgs/imgMedicina.png" type="image/png">
+    <link rel="stylesheet" href="./css/calculadoraMacro.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <title>Calculadora do Metabolismo Bsal</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="./index.html">
+                <img src="./assets/imgs/imgMedicina.png" alt="Logo da empresa / Simbolo da medicina">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./news.html">News</a></li>
+                <li><a href="#">Calculadora <span class="icon">&dtrif;</span></a>
+                    <ul class="dropdown">
+                        <li class="sub-item"><a href="../public/calculadoraMacro.html">Dieta Flexível</a></li>
+                        <li class="sub-item"><a href="">Macronutrientes</a></li>
+                        <li class="sub-item"><a href="./calculadora.html">Percentual de Gordura Corporal</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Alimentação</a></li>
+            </ul>
+        </nav>
+        <div class="b">
+            <a href="./cadastro.html">
+                <button>Cadastro</button>
+            </a>
+            <a href="./login.html">
+                <button>Login</button>
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="container-section">
+            <div class="container">
+                <h1>CALCULADORA SIMPLIFICADA DE DIETA FLEXÍVEL (TDEE)</h2>
+                <p>Esta calculadora foi feita para simplificar a sua vida na hora de determinar os seus macros para a
+                    montagem
+                    de dieta! Espero que goste e que seja útil!</p>
+
+                <form>
+                    <label>Sexo*</label>
+                    <div id="sexo" class="radio-groupo">
+                        <input type="radio" name="sexo" id="iptFeminino">
+                        <label>Feminino</label>
+                        <input type="radio" name="sexo" id="iptMasculino">
+                        <label>Masculino</label>
+                    </div>
+
+                    <label>Biotipo*</label>
+                    <div id="biotipo" class="radio-groupo">
+                        <input type="radio" name="biotipo" id="iptEctomorfo">
+                        <label>Ectomorfo</label>
+                        <input type="radio" name="biotipo" id="iptMesomorfo">
+                        <label>Mesomorfo</label>
+                        <input type="radio" name="biotipo" id="iptEndomorfo">
+                        <label>Endomorfo</label>
+                    </div>
+                    <p class="anotacao">Lembrando que isso é apenas uma tendência, ou seja, marque ectomorfo se você tem
+                        tendência a
+                        emagrecer, se você tem tendência a ser atlético, marque mesomorfo, e se você tem tendência a
+                        engordar,
+                        marque endomorfo.</p>
+
+                    <label>Altura (cm)*</label>
+                    <input type="number" id="iptAltura" oninput="calcular()">
+
+                    <label>Peso (kg)*</label>
+                    <input type="number" id="iptPeso" oninput="calcular()">
+
+                    <label>Idade (anos)*</label>
+                    <input type="number" id="iptIdade" oninput="calcular()">
+
+                    <label>Taxa Metabólica Basal</label>
+                    <input type="text" id="iptTmb" placeholder="" disabled>
+                    <p class="anotacao">Estas são as calorias que seu corpo gasta simplesmente para sobreviver, ou seja,
+                        se você
+                        ficar 24 hrs dormindo.</p>
+
+                    <label>Nível de Atividade</label>
+                    <input type="range" id="iptNivel_atividade" min="1" max="5" value="2" oninput="nivelAtividade()">
+                    <p>Valor: <span id="spValor">2</span></p>
+                    <p class="anotacao">
+                        1 - Sedentário: praticamente não faz nada | 2 - Levemente ativo: exercícios leves 1-3x por
+                        semana |
+                        3 - Moderadamente ativo: exercícios moderados de 3-5x por semana |
+                        4 - Muito ativo: exercícios pesados/esportes 6-7x por semana |
+                        5 - Extremamente ativo: exercícios muito pesados, treinando duas vezes ao dia.
+                    </p>
+
+                    <label>TDEE</label>
+                    <input type="text" id="tdee" placeholder="" disabled>
+                    <p class="anotacao">Estas são as calorias que seu corpo gasta em média para sobreviver e realizar as
+                        suas
+                        atividades do cotidiano, considerando o seu nível médio de atividade.</p>
+
+                    <label>Qual seu objetivo?*</label>
+                    <select id="sltObjetivo" oninput="objetivo()">
+                        <option value="#" disabled selected>Selecione uma opção</option>
+                        <option value="emagrecer">Emagrecer</option>
+                        <option value="manter">Manter</option>
+                        <option value="ganhos_secos">Ganhos Secos</option>
+                    </select>
+                    <p class="anotacao">
+                        Lembrando que as opções mais saudáveis e sustentáveis são as "emagrecer", "manter" e "ganhos
+                        secos".
+                        Pois o processo é mais lento, porém muito mais tranquilo e correto.
+                    </p>
+
+                    <label>Você deve consumir por dia:</label>
+                    <input type="text" id="consumo-diario" placeholder="" disabled>
+                    <p class="anotacao">
+                        Estas são as calorias que você deve consumir de acordo com o objetivo escolhido acima.
+                        (Se você quer ganhar peso, por exemplo, estas calorias estarão acima do seu TDEE, se você quer
+                        manter,
+                        estarão iguais e se quiser emagrecer, estarão menores).
+                    </p>
+
+                    <label>Quantidade de Proteína diária</label>
+                    <input type="text" id="iptProteina" placeholder="" disabled>
+                    <p class="anotacao">
+                        A quantidade de proteína varia de acordo com a sua massa magra, por isso varia de acordo com o
+                        seu peso
+                        e estado atual.
+                    </p>
+
+                    <label>Quantidade de Gordura diária</label>
+                    <input type="text" id="iptGordura" placeholder="" disabled>
+                    <p class="anotacao">
+                        A quantidade de gordura varia de acordo com o seu peso total.
+                    </p>
+
+                    <label>Quantidade de Carboidrato diária</label>
+                    <input type="text" id="iptCarboidrato" placeholder="" disabled>
+                    <p class="anotacao">
+                        A quantidade de carboidratos é a quantidade total que deve ser ingerida de calorias menos a
+                        proteína e
+                        gordura.
+                    </p>
+                </form>
+            </div>
+            </div>
+
+        </section>
+        <section class="rodape">
+            <footer>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="">News</a></li>
+                        <li><a href="">Alimentação</a></li>
+                    </ul>
+                </nav>
+                <div class="contato">
+                    <span>Contato</span>
+                    <img src="./assets/icon/facebook.png" alt="icone do facebook">
+                    <img src="./assets/icon/instagrampsa.png" alt="icone do instagram">
+                    <img src="./assets/icon/linkedin.png" alt="icone do linkedin">
+                </div>
+            </footer>
+        </section>
+    </main>
+    <script src="../public/js/calculadoraMacro.js"></script>
+</body>
+
+</html>
+
+<script>
+
+    function objetivo() {
+        
+
+    }
+
+
+</script>

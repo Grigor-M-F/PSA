@@ -20,7 +20,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background-image: url(../assets/img/Fundo_login.jpg);
+    background-image: url(../assets/imgs/fundo_cadastro.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -35,7 +35,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #fff;
+    background: #d8f3e8;
 }
 
 .form-header {

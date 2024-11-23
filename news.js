@@ -10,62 +10,37 @@ app.listen(port, () => {
 })
 
 app.get('/', async (req, res) => {
-        var pesquisa = req.body.pesquisa;
+        var pesquisa = req.params.pesquisa;
         const news = await googleNewsApi.getNews(googleNewsApi.SEARCH, `${pesquisa}`, "pt-GB", () => {})
-        treat_data(news)
-        res.send(news);
+        const processar_dados = treat_data(news);
+        res.json(processar_dados);
 })
 
 function treat_data(news) {
-    const data_frame = news;
-    var titulo, descr, url;
+    var data_frame = [];
+    var title, descr, url;
 
-    for(var i=0; i<data_frame.items.length; i++){
-        titulo = data_frame.items[i].title;
-        descr = data_frame.items[i].description;
-        url = data_frame.items[i].url;
+    for(var i=0; i<data_frame.length;i++){
+        title = news.items[i].title;
+        descr = news.items[i].description;
+        url = news.items[i].url;
     }
 
-    console.log(title, descr, url)
+    data_frame.push({
+        title: title,
+        description: descr,
+        url: url
+    })
 
+    return data_frame
 }
 
-console.log(treat_data());
-
-// usar o fetch para acessar o que o usuário digitou.
-
-// fetch ('http://localhost:3000/')
-// .then((response) => response.json())
-// .then((response) => {
-//     console.log('resposta: ', response);
-// })
-// .catch((error) => {console.log(error)})
-
-
-// function treat_data () {
-//     var data_frame = df;
-//     var title;
-//     var desc;
-//     var url;
-    
-
-//     for(var i=0; i<data_frame.length; i++){
-//         title = data_frame.items[i].title;
-//         desc = data_frame.items[i].description;
-//         url = data_frame.items[i].url;
-//     }
-
-
-// }
-
-// console.log(treat_data())
-
-// function search() {
-//     treat_data()
-
-//    var searchUser = iptSearch.value;
-
-//    for(var i=0; i<df.length; i++){
-
-//    }
-// }
+fetch('http://localhost:3000/soccer')  // Substitua "soccer" pela pesquisa que você deseja
+    .then(response => response.json())  // Convertendo a resposta para JSON
+    .then(data => {
+        console.log(data);  // Exibe as notícias processadas no console
+        // Aqui você pode usar os dados para exibir as notícias na página, por exemplo
+    })
+    .catch(error => {
+        console.error('Erro ao buscar notícias:', error);
+    });
