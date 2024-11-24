@@ -12,14 +12,6 @@ telefone char(11) not null,
 senha varchar(20)
 );
 
-
-SELECT idUser, nome, email FROM cadastro WHERE email = 'test@hotmail.com' AND senha = 'Git012@#$';
-
-SELECT * FROM cadastro;
-
-DELETE FROM cadastro WHERE idUser = 2;
-UPDATE cadastro SET senha = 'Git012@#$' WHERE idUser = 3;
-
 CREATE TABLE if not exists data_frame (
 idData_frame int primary key auto_increment,
 title varchar(100),
@@ -37,22 +29,18 @@ constraint fkUserFale foreign key (fkUser)
 references cadastro (idUser)
 );
 
-CREATE TABLE if not exists questionario (
+CREATE TABLE if not exists quest (
 	idQuest int primary key auto_increment,
-	lesao TINYINT,
-	qtd_Lesoe INT,
-	uf CHAR(2),
-	cidade VARCHAR(100),
+	forca INT,
+	resistencia INT,
+    velocidade INT,
+    recuperacao INT,
+    lesao INT,
+    saudeMental INT,
+    fadiga INT,
+    tmb int,
+    objetivo varchar(30),
+    temp_obj int,
 	fkUsuario int,
 	CONSTRAINT fkUserQuest FOREIGN KEY (fkUsuario) REFERENCES cadastro (idUser)
-);
-
-
-CREATE TABLE if not exists mensagem (
-	fkUser int,
-	fkMedico int,
-	PRIMARY KEY(fkUser, fkMedico),
-	dtEnvio TIMESTAMP,
-	dtRecebimento TIMESTAMP,
-	mensagem TEXT
 );

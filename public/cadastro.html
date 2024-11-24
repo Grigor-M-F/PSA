@@ -183,7 +183,7 @@
     var confirmacaoSenhaVar = iptSenhaConfirm.value;
 
 
-    fetch("/usuarios/autenticar", {
+    fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -204,7 +204,7 @@
           alert("Cadastro realizado com sucesso! Aguarde que você será direcionado para a página de login...");
 
           setTimeout(() => {
-            window.location = "http://localhost:3333/login.html?";
+            window.location = "questionario.html";
           }, "2000");
         } else {
           alert("Ocorreu um erro ao realizar o cadastro, tente novamente!");

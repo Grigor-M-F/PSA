@@ -22,7 +22,7 @@
                 <li><a href="./news.html">News</a></li>
                 <li><a href="#">Calculadora<span class="icon">&dtrif;</span></a>
                     <ul class="dropdown">
-                        <li class="sub-item"><a href="../public/calculadoraMacro.html">Dieta Flexível</a></li>
+                        <li class="sub-item"><a href="../public/calculadora.html">Dieta Flexível</a></li>
                         <li class="sub-item"><a href="">Macronutrientes</a></li>
                         <li class="sub-item"><a href="../public/percentualGordura.html">Percentual de gordura
                                 Corporal</a></li>
@@ -47,31 +47,215 @@
                 <h1>Pesquisa de condição de Saúde</h1>
                 <p>Por favor, preencha está pesquisa de saúde para o seu próprio bem</p>
                 <form>
-                    <label class="left">Já teve alguma lesão?</label>
-                    <div id="lesao" class="lesao">
-                        <input type="radio" name="lesao" id="iptSim">
-                        <label class="chk">Sim</label>
-                        <input type="radio" name="lesao" id="iptNao">
-                        <label class="chk">Não</label>
+                    <!-- Força -->
+                    <label class="left">Como você avaliaria sua força muscular geral em uma escala de 1 a 10?</label>
+                    <input type="range" class="range" id="iptForcaEscala" min="1" max="10" value="6" oninput="range()">
+                    <p class="text">Valor: <span id="spForca"></span></p> 
+
+                    <!-- Resistência aeróbica -->
+                    <label class="left">Em uma escala de 1 a 10, como você avaliaria sua resistência cardiovascular (capacidade de sustentar esforço aeróbico)?</label>
+                    <input type="range" class="range" id="iptResisEscala" min="1" max="10" value="4" oninput="range()">
+                    <p class="text">Valor: <span id="spResistencia"></span></p>
+
+                    <!-- Velocidade -->
+                    <label class="left">Como você avaliaria sua velocidade em uma escala de 1 a 10?</label>
+                    <input type="range" class="range" id="iptVeloEscala" min="1" max="10" value="5" oninput="range()">
+                    <p class="text">Valor: <span id="spVelocidade"></span></p>
+
+                    <!-- Tempo de recuperação -->
+                    <label class="left">Após um treino intenso, quanto tempo você leva para se sentir descansado e pronto para a próxima atividade?</label>
+                    <input type="range" class="range" id="iptRecuEscala" min="1" max="10" value="6" oninput="range()">
+                    <p class="text">Valor: <span id="spRecuperacao"></span></p>
+
+                    <!-- Risco de lesão -->
+                    <label class="left">Em uma escala de 1 a 10, como você avaliaria o risco de lesão com base na sua frequência e intensidade de treino?</label>
+                    <input type="range" class="range" id="iptLesaoEscala" min="1" max="10" value="1" oninput="range()">
+                    <p class="text">Valor: <span id="spLesao"></span></p>
+
+                    <!-- Saúde Mental e Estresse -->
+                    <label class="left">Em uma escala de 1 a 10, como você avaliaria seu nível de estresse e saúde mental relacionados ao esporte ou à rotina de treinamento?</label>
+                    <input type="range" class="range" id="iptSaudeEscala" min="1" max="10" value="4" oninput="range()">
+                    <p class="text">Valor: <span id="spSaude"></span></p>
+
+                    <!-- Fadiga -->
+                    <label class="left">Em uma escala de 1 a 10, como você avaliaria sua resistência à fadiga durante os treinos ou competições?</label>
+                    <input type="range" class="range" id="iptFadigaEscala" min="1" max="10" value="5" oninput="range()">
+                    <p class="text">Valor: <span id="spFadiga"></span></p>
+
+
+                    <label class="left">Insira seu Metabolismo Basal, sem o nível de atividade (tdee)</label>
+                    <input type="number" id="iptTmb" class="caixa" minlength="4" maxlength="4">
+
+                    <p>Qual é o seu objetivo</p>
+                    <select name="objetivo" id="sltObjetivo">
+                        <option value="#" disabled selected>Selecione uma opção</option>
+                        <option value="emagrecer">Emagrecimento</option>
+                        <option value="manter">Manter a massa muscular</option>
+                        <option value="ganhar">Aumentar a massa muscular</option>
+                        <option value="aumentar">Aumentar a aptidão física</option>
+                    </select>
+
+                    <p class="objetivoP">Em quanto tempo deseja atingir seu objetivo?</p>
+
+                    <div class="flex">
+                        <div class="chk" id="iptCheck">
+                            <label>8 Semanas</label>
+                            <input type="radio" id="ipt8">
+                        </div>
+
+                        <div class="chk" id="iptCheck">
+                            <label>16 Semanas</label>
+                            <input type="radio" id="ipt16">
+                        </div>
+
+                        <div class="chk" id="iptCheck">
+                            <label>24 Semanas</label>
+                            <input type="radio" id="ipt24">
+                        </div>
+
+                        <div class="chk" id="iptCheck">
+                            <label>32 Semanas</label>
+                            <input type="radio" id="ipt32">
+                        </div>
+
+
+                        <div class="chk" id="iptCheck">
+                            <label>40 Semanas</label>
+                            <input type="radio" id="ipt40">
+                        </div>
+
+                        <div class="chk" id="iptCheck">
+                            <label>1 Ano</label>
+                            <input type="radio" id="iptYear">
+                        </div>
                     </div>
-
-                    <label class="left">Quantas lesões você já teve?</label>
-                    <input type="number" id="iptQtdlesao" class="caixa">
-
-                    <label class="left">Há quanto tempo prática esporte</label>
-                    <input type="number" id="iptTemp" class="caixa">
-
-                    <label class="left">Estado em que reside</label>
-                    <input type="text" id="iptUf" class="caixa">
-
-                    <label class="left">Cidade que reside</label>
-                    <input type="text" id="iptCity" class="caixa">
-
+                    
+                    <div class="button">
+                        <button onclick="form()">Enviar</button>
+                    </div>
                 </form>
             </div>
+        </section>
 
+        <section class="rodape">
+            <footer>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="">News</a></li>
+                        <li><a href="">Alimentação</a></li>
+                    </ul>
+                </nav>
+                <div class="contato">
+                    <span>Contato</span>
+                    <img src="./assets/icon/facebook.png" alt="icone do facebook">
+                    <img src="./assets/icon/instagrampsa.png" alt="icone do instagram">
+                    <img src="./assets/icon/linkedin.png" alt="icone do linkedin">
+                </div>
+            </footer>
         </section>
     </main>
+
+    <script src="./js/quest.js"></script>
 </body>
 
 </html>
+
+<script>
+
+    function form() {
+        var forca = iptForcaEscala.value;
+        var resistencia = iptResisEscala.value;
+        var velocidade = iptVeloEscala.value;
+        var recuperacao = iptRecuEscala.value;
+        var lesao = iptLesaoEscala.value;
+        var saudeMental = iptSaudeEscala.value;
+        var fadiga = iptFadigaEscala.value;
+        var tmb = iptTmb.value;
+        var objetivo = sltObjetivo.value;
+        var obj_temp = iptCheck.value;
+
+        if (forca == "" ||
+            resistencia == "" ||
+            velocidade == "" ||
+            recuperacao == ""  ||
+            lesao == "" ||
+            saudeMental == "" ||
+            fadiga == "" ||
+            objetivo == "" ||
+            obj_temp == ""
+        ) {
+            alert("Preencha todos os campos para enviar o formulário")
+            return;
+        }
+
+        var lesaoBD = 0;
+        var objBD = "manter";
+        var obj_tempBD = 8;
+
+        if (lesao == "iptSim") {
+            lesaoBD = 1;
+        } else if (objetivo = "emagrecer") {
+            objBD = "emagrecer";
+        } else if (objetivo == "aumentar") {
+            objBD = "aumentar";
+        } else if (objetivo == "ganhar") {
+            objBD = "ganhar";
+        } else if (obj_temp == "ipt16") {
+            obj_tempBD = 16;
+        } else if (obj_temp == "ipt24") {
+            obj_tempBD = 24;
+        } else if (obj_temp == "ipt32") {
+            obj_tempBD = 32;
+        } else if (obj_temp == "ipt40") {
+            obj_tempBD = 40;
+        } else if (obj_temp == "iptYear") {
+            obj_tempBD = 1;
+        }
+
+
+        fetch("/quest/form", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: sessionStorage.NOME_USUARIO,
+                emailServer: sessionStorage.EMAIL_USUARIO,
+                senhaServer: sessionStorage.SENHA_USUARIO,
+                forcaServer: forca,
+                resistenciaServer: resistencia,
+                velocidadeServer: velocidade,
+                recuperacaoServer: recuperacao,
+                lesaoServer: lesao,
+                saudeMentalServer: saudeMental,
+                fadigaServer: fadiga,
+                tmbServer: tmb,
+                objetivoServer: objetivo,
+                obj_tempServer: obj_temp
+            })
+        })
+        .then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    setTimeout(function () {
+                        window.location = "login.html";
+                    }, 1000); 
+
+                } else {
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    }
+
+</script>
