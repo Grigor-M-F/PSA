@@ -52,13 +52,11 @@ function dados_kpi1(){
   return database.executar(instrucaoSql);
 
 }
+
+
 function dados_kpi2(){
   console.log("to dentro do model");
-  var instrucaoSql = `SELECT
-	chegada AS 'Dia do cadastro',
-    temp_obj AS 'Data do Objetivo'
-    FROM quest
-    JOIN  cadastro ON fkUsuario = idUser;`
+  var instrucaoSql = `SELECT DATE_ADD(chegada, INTERVAL temp_obj DAY) FROM quest;`
 
   console.log('executando o select \n' + instrucaoSql);
   return database.executar(instrucaoSql);

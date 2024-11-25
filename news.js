@@ -9,8 +9,9 @@ app.listen(port, () => {
     console.log("Funcionou, está rodando na porta: " + port);
 })
 
-app.get('/', async (req, res) => {
-        var pesquisa = req.params.pesquisa;
+app.post('/', async (req, res) => {
+    console.log("buceta")
+        var pesquisa = req.body.pesquisa;
         const news = await googleNewsApi.getNews(googleNewsApi.SEARCH, `${pesquisa}`, "pt-GB", () => {})
         const processar_dados = treat_data(news);
         res.json(processar_dados);

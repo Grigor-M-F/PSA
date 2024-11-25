@@ -82,7 +82,7 @@
             return;
         }
 
-        fetch("http://localhost:3333/usuarios/news", {
+        fetch("/news/", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -90,16 +90,16 @@
             body: JSON.stringify({
                 searchServer: searchVar
             }),
-        }).then(function(response) {
-               response.json().then(response =>{
-                    console.log(response)
-               })
+        }).then(function (response) {
+            response.json().then(response => {
+                console.log(response)
+            })
 
-                
+
         })
-           
+
     }
 
 
-    
+
 </script>

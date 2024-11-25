@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/dashboards.css">
     <title>PSA dashboardt</title>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -35,30 +35,63 @@
             </div>
         </div>
     </header>
-
-    <div class="kpicontainer">
-        <h1>Seu gasto Energético diário</h1>
-        <p>Sua taxa Metabolica Basal, mais o seu Nível de Atividade</p>
-
-
-        <h2 id="tmbValor"></h2>
+    <main>
+        <section>
+            <div class="kpicontainer">
+                <h1>Seu gasto Energético diário</h1>
+                <p>Sua taxa Metabolica Basal, mais o seu Nível de Atividade</p>
 
 
-    </div>
+                <h2 id="tmbValor"></h2>
 
-    <div class="dash" id="dashPsa">
-        <div id="idgrafico">
-            <canvas id="myChart" width="600" height="400"></canvas>
-        </div>
-    </div>
+                <canvas id="kpi"></canvas>
+            </div>
 
+            <div class="dash" id="dashPsa">
+                <div id="idgrafico">
+                    <canvas id="myChart" width="600" height="400"></canvas>
+                </div>
+            </div>
 
-
+        </section>
+    </main>
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
 <script>
     user.innerHTML = sessionStorage.NOME_USUARIO;
+
+    var tmb = 0;
+
+
+    fetch(`http://localhost:3333/dash/dados_kpi1`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
+        tmb = res.tmb;
+        tmbValor.innerHTML = `${tmb}`
+    })
+
+    var diasForObj = 0;
+    fetch(`http://localhost:3333/dash/dados_kpi2`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
+        chegada = res.chegada;
+        tempoObjetivo = res.temp_obj;
+        
+    })
+
+
 
 
 </script>
