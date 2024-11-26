@@ -10,12 +10,15 @@
     <title>PSA dashboardt</title>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 
 <body>
     <header>
-        <div class="header-left">
-            <h1>PSA</h1>
+        <div class="header-left" id="kpiRetornar">
+            <a href="#">
+                <h1>PSA</h1>
+            </a>
 
             <div class="hello">
                 <h3>Olá, <span id="user">usuário</span></h3>
@@ -25,10 +28,11 @@
                     <h3>Mensagem</h3>
                 </a>
             </div>
-            <div class="btn-nav">
-                <a href="">
-                    <h3>Mural de Avisos</h3>
-                </a>
+            
+            <div class="btn-nav" id="grafico">
+                <button onclick="grafico()" class="button">
+                    <h3>Gráficos</h3>
+                </button>
             </div>
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -36,21 +40,44 @@
         </div>
     </header>
     <main>
-        <section>
-            <div class="kpicontainer">
-                <h1>Seu gasto Energético diário</h1>
-                <p>Sua taxa Metabolica Basal, mais o seu Nível de Atividade</p>
+        <section class="kpi">
+            <div class="kpitext" id="kpitext" style="display: block;">
+                <div class="kpicontainer" id="kpicontainer">
+                    <h1>Seu gasto Energético diário</h1>
+                    <p>Sua taxa Metabolica Basal, mais o seu Nível de Atividade</p>
 
 
-                <h2 id="tmbValor"></h2>
+                    <h2 id="tmbValor"></h2>
 
-                <canvas id="kpi"></canvas>
-            </div>
-
-            <div class="dash" id="dashPsa">
-                <div id="idgrafico">
-                    <canvas id="myChart" width="600" height="400"></canvas>
+                    <canvas id="kpi"></canvas>
                 </div>
+                <div class="kpicontainer">
+                    <h1>Você está a <span id="obj_temp"></span> do <span id="objetivo"></span></h1>
+
+                    <h2 id="objetivo"></h2>
+
+                    <canvas id="kpi"></canvas>
+                </div>
+                <div class="kpicontainer">
+                    <h2>Média de calorias dos meus usuários</h2>
+                    <span id="media"></span>
+                </div>
+            </div>
+            <div class="kpiGrafico" id="graficoKpi" style="display: block;">
+                <div class="kpiBarra">
+                    <canvas id="kpiBarra"></canvas>
+                </div>
+                <div class="kpiHistoriograma">
+                    <canvas id="kpiHistoriograma"></canvas>
+                </div>
+            </div>
+        </section>
+        <section class="grafico">
+            <div class="dash" id="dashPsa" style="display: none;">
+                <div id="myRadarChart">
+                    <canvas id="myRadar" width="400" height="400"></canvas>
+                </div>
+
             </div>
 
         </section>
@@ -58,8 +85,7 @@
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
 
 <script>
     user.innerHTML = sessionStorage.NOME_USUARIO;
@@ -67,29 +93,176 @@
     var tmb = 0;
 
 
-    fetch(`http://localhost:3333/dash/dados_kpi1`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(res => res.json()).then((res) => {
-        console.log(res);
-        tmb = res.tmb;
-        tmbValor.innerHTML = `${tmb}`
-    })
+    // fetch(`http://localhost:3333/dash/dados_kpi1`, {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     }
+    // }).then(res => res.json()).then((res) => {
+    //     console.log(res);
+    //     tmb = res.tmb;
+    //     tmbValor.innerHTML = `${tmb}`
+    // })
 
-    var diasForObj = 0;
-    fetch(`http://localhost:3333/dash/dados_kpi2`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+    // var diasForObj = 0;
+    // fetch(`http://localhost:3333/dash/dados_kpi2`, {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     }
+    // }).then(res => res.json()).then((res) => {
+    //     console.log(res);
+    //     chegada = res.chegada;
+    //     tempoObjetivo = res.temp_obj;
+
+    // })
+
+
+
+
+
+
+
+
+
+
+    function grafico() {
+        document.getElementById("kpitext").style.display = 'none';
+        document.getElementById("graficoKpi").style.display = 'none';
+        document.getElementById("dashPsa").style.display = 'block';
+
+        var ctx = document.getElementById("myRadar").getContext("2d");
+
+        var data = {
+            labels: ['Velocidade', 'Resistência', 'Fadiga', 'Recuperação', 'Saúde Mental', 'Lesão'],
+            datasets: [{
+                label: 'Radar de Características',
+                data: [7, 6, 5, 8, 7, 8],
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 5,
+            }]
+        };
+
+        var options = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "top",
+                    labels: {
+                        font: {
+                            size: 16,
+                            family: 'Arial',
+                            weight: 'bold',
+                        },
+                        color: '#000'
+                    }
+                }
+
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    fontSize: 16,
+                    fontColor: '#666',
+                },
+                gridLines: {
+                    color: 'rgba(100, 200, 200, 0.3)',
+                    lineWidth: 1,
+                },
+                pointLabels: {
+                    fontSize: 16,
+                    fontColor: '#333',
+                }
+            }
         }
-    }).then(res => res.json()).then((res) => {
-        console.log(res);
-        chegada = res.chegada;
-        tempoObjetivo = res.temp_obj;
-        
-    })
+
+        var radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: data,
+            options: options
+        });
+
+
+
+
+    }
+
+    // const voltar = document.getElementById("kpiRetornar");
+    // voltar.addEventListener("click", function () {
+    //     document.getElementById("kpicontainer").style.display = 'block'
+    //     document.getElementById("dashPsa").style.display = 'none'
+
+    var ctx2 = document.getElementById("kpiBarra").getContext("2d");
+
+    var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Pessoa A', 'Pessoa B', 'Pessoa C', 'Pessoa D', 'Pessoa E'],
+            datasets: [{
+                label: 'Metabolismo Basal (kcal/dia)',
+                data: [1800, 2200, 2100, 2500, 2000],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            }
+        }
+    });
+
+
+    var ctx = document.getElementById("kpiHistoriograma").getContext("2d");
+
+    var histogramChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1500-1600 kcal', '1600-1700 kcal', '1700-1800 kcal', '1800-1900 kcal', '1900-2000 kcal'],
+            datasets: [{
+                label: 'Número de Pessoas',
+                data: [5, 12, 9, 6, 3],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            }
+        }
+    });
+
+    // })
+
+
+
 
 
 

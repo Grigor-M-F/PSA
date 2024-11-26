@@ -5,7 +5,7 @@ var newsController = require("../controllers/newsController");
 
 router.post("/", function (req, res) {
     console.log(req.body)
-    newsController.insert(req, res);
+    newsController.search(req, res);
 })
 
 module.exports = router; 

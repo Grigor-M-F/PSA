@@ -33,48 +33,49 @@
           <div class="input-box">
             <div class="form-control">
               <label>Nome Completo:</label>
-              <input type="text" oninput="validar()" id="iptNome" placeholder="Insira seu nome">
+              <input type="text" oninput="validarNome()" id="iptNome" placeholder="Insira seu nome">
               <span id="erroNome"></span>
             </div>
             <div class="input-box">
               <div class="form-control">
                 <label>Email:</label>
-                <input type="text" oninput="validar()" id="iptEmail" placeholder="Insira seu Email">
+                <input type="text" oninput="validarEmail()" id="iptEmail" placeholder="Insira seu Email">
                 <span id="erroEmail"></span>
               </div>
             </div>
             <div class="input-box">
               <div class="form-control">
                 <label>Data de Nascimento:</label>
-                <input type="date" oninput="validar()" id="iptData" placeholder="Selecione sua data de Nascimento">
+                <input type="date" oninput="validarDtNasc()" id="iptData"
+                  placeholder="Selecione sua data de Nascimento">
                 <span id="erroData"></span>
               </div>
             </div>
             <div class="input-box">
               <div class="form-control">
                 <label>CPF:</label>
-                <input type="number" oninput="validar()" id="iptCpf" placeholder="Insira seu CPF">
+                <input type="number" oninput="validarCpf()" id="iptCpf" placeholder="Insira seu CPF">
                 <span id="erroCPF"></span>
               </div>
             </div>
             <div class="input-box">
               <div class="form-control">
                 <label>Telefone:</label>
-                <input type="number" oninput="validar()" id="iptTelefone" placeholder="Insira seu Telefone">
+                <input type="number" oninput="validarTelefone()" id="iptTelefone" placeholder="Insira seu Telefone">
                 <span id="erroTelefone"></span>
               </div>
             </div>
             <div class="input-box">
               <div class="form-control">
                 <label>Senha:</label>
-                <input type="password" oninput="validar()" id="iptSenha" placeholder="Insira sua Senha">
+                <input type="password" oninput="validarSenha()" id="iptSenha" placeholder="Insira sua Senha">
                 <span id="erroSenha"></span>
               </div>
             </div>
             <div class="input-box">
               <div class="form-control">
                 <label>Confirmar Senha:</label>
-                <input type="new-password" oninput="validar()" id="iptSenhaConfirm" placeholder="Repita a senha">
+                <input type="new-password" oninput="validarConfirm()" id="iptSenhaConfirm" placeholder="Repita a senha">
                 <span id="erroConfirmSenha"></span>
               </div>
             </div>
@@ -82,6 +83,7 @@
               <a href="">
                 <button onclick="cadastrar()">Cadastrar</button>
               </a>
+              <span><a href="./login.html"></a></span>
               <span id="error" style="display: none;"></span>
             </div>
           </div>
@@ -105,14 +107,86 @@
     }
   }
 
-  function validar() {
+  function validarNome() {
     var nomeVar = iptNome.value.trim();
+    if (!nomeVar.includes(" ")) {
+      erroNome.innerHTML = `<span style="color: red;">Seu nome não é composto</span>`;
+    } else {
+      erroNome.innerHTML = `<span></span>`;
+    }
+  }
+
+  function validarEmail() {
     var emailVar = iptEmail.value.trim();
+    if (!emailVar.includes("@") || !emailVar.includes(".")) {
+      erroEmail.innerHTML = `<span style="color: red;">Não possuí @ ou dominio</span>`;
+    } else {
+      erroEmail.innerHTML = `<span></span>`;
+    }
+
+  }
+
+  function validarDtNasc() {
     var dtNascVar = iptData.value.trim();
+    if (dtNascVar == "") {
+      erroData.innerHTML = `<span style="color: red;">Esse campo não pode ser vazio</span>`
+    } else {
+      erroData.innerHTML = `<span></span>`
+    }
+
+  }
+
+  function validarCpf() {
     var cpfVar = iptCpf.value.trim();
+    if (cpfVar.length != 11) {
+      erroCPF.innerHTML = `<span style="color: red;">Só pode inserir onze números e aceita apenas números</span>`;
+    } else {
+      erroCPF.innerHTML = `<span></span>`;
+    }
+
+  }
+
+  function validarTelefone() {
     var telefoneVar = iptTelefone.value.trim();
+    if (telefoneVar.length != 11) {
+      erroTelefone.innerHTML = `<span style="color: red;">Telefone tem que ter 11 digitos e só pode ser número</span>`;
+    } else {
+      erroTelefone.innerHTML = `<span></span>`;
+    }
+
+  }
+
+  function validarSenha() {
+    var senhaVar = iptSenha.value.trim();
+    if (senhaVar.length < 8 || !charEspecial(senhaVar)) {
+      erroSenha.innerHTML = `<span style="color: red;">Senha menor que 8 digitos e não contém caracter especial</span>`;
+    } else {
+      erroSenha.innerHTML = `<span></span>`;
+    }
+
+  }
+
+
+  function validarConfirm() {
     var senhaVar = iptSenha.value.trim();
     var confirmSenhaVar = iptSenhaConfirm.value.trim();
+    if (senhaVar != confirmSenhaVar) {
+      erroConfirmSenha.innerHTML = `<span style="color: red;">Confirmação de senha diferente da senha do campo anterior.</span>`;
+    } else {
+      erroConfirmSenha.innerHTML = `<span></span>`;
+    }
+
+  }
+
+  function cadastrar() {
+    var nomeVar = iptNome.value;
+    var emailVar = iptEmail.value;
+    var dtNascVar = iptData.value;
+    var cpfVar = iptCpf.value;
+    var telefoneVar = iptTelefone.value;
+    var senhaVar = iptSenha.value;
+    var confirmacaoSenhaVar = iptSenhaConfirm.value;
+
 
     var erro = document.getElementById("erro");
 
@@ -126,61 +200,6 @@
     ) {
       error.innerHTML = `<span style="color: red;">Todos os campos são obrigatórios</span>`;
     }
-
-
-    if (!nomeVar.includes(" ")) {
-      erroNome.innerHTML = `<span style="color: red;">Seu nome não é composto</span>`;
-    } else {
-      erroNome.innerHTML = `<span style="color: red; display: none;">Seu nome não é composto</span>`;
-    }
-
-    if (!emailVar.includes("@") || !emailVar.includes(".")) {
-      erroEmail.innerHTML = `<span style="color: red;">Não possuí @ ou dominio</span>`;
-    } else {
-      erroEmail.innerHTML = `<span style="color: red; display: none;"></span>`;
-    }
-
-    if (dtNascVar == "") {
-      erroData.innerHTML = `<span style="color: red;">Esse campo não pode ser vazio</span>`
-    } else {
-      erroData.innerHTML = `<span style="color: red; display: none;"></span>`;
-    }
-
-    if (cpfVar.length != 11) {
-      erroCPF.innerHTML = `<span style="color: red;">Só pode inserir onze números e aceita apenas números</span>`;
-    } else {
-      erroCPF.innerHTML = `<span style="color: red; display: none;"></span>`;
-    }
-
-    if (telefoneVar.length != 11) {
-      erroTelefone.innerHTML = `<span style="color: red;">Telefone tem que ter 11 digitos e só pode ser número</span>`;
-    } else {
-      erroTelefone.innerHTML = `<span style="color: red; display: none;"></span>`;
-    }
-
-
-    if (senhaVar.length < 8 || !charEspecial(senhaVar)) {
-      erroSenha.innerHTML = `<span style="color: red;">Senha menor que 8 digitos e não contém caracter especial</span>`;
-    } else {
-      erroSenha.innerHTML = `<span style="color: red; display: none;"></span>`;
-    }
-
-    if (senhaVar != confirmSenhaVar) {
-      erroConfirmSenha.innerHTML = `<span style="color: red;">Confirmação de senha diferente da senha do campo anterior.</span>`;
-    } else {
-      erroConfirmSenha.innerHTML = `<span style="color: red; display: none;">Seu nome não é composto</span>`;
-    }
-
-  }
-
-  function cadastrar() {
-    var nomeVar = iptNome.value;
-    var emailVar = iptEmail.value;
-    var dtNascVar = iptData.value;
-    var cpfVar = iptCpf.value;
-    var telefoneVar = iptTelefone.value;
-    var senhaVar = iptSenha.value;
-    var confirmacaoSenhaVar = iptSenhaConfirm.value;
 
 
     fetch("/usuarios/cadastrar", {
