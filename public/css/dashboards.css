@@ -13,11 +13,15 @@ header {
   height: 100dvh;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-direction: column;
   background: var(--cor--primaria);
   border-right: 3px solid var(--cor--primaria);
-  /* z-index: 999; */
+}
+
+.header-left a img {
+  width: 100%;
+  height: 40%;
 }
 
 .header-left a {
