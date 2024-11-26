@@ -63,9 +63,6 @@
                 <h1 id="tituloOutput"></h1>
                 <p id="descrOutput"></p>
                 <p id="urlOutput"></p>
-                <!-- <div ></div>
-                <div ></div>
-                <div ></div> -->
             </div>
         </section>
 
@@ -100,29 +97,35 @@
             }),
         }).then(function (response) {
             response.json().then(function (data) {
+            console.log(data)
 
-                for (var i = 0; i < 5; i++) {
+                for (var i = 0; i < 10; i++) {
                     // var title = response.title[i];
                     // newsOutput.push(response[i]);
-                    if (data.title && data.description && data.url) {
+                    if (data[i].title && data[i].description && data[i].url) {
                         newsOutput.push({
-                            title: data.title[i],
-                            descr: data.description[i],
-                            url: data.url[i]
+                            title: data[i].title,
+                            descr: data[i].description,
+                            url: data[i].url
                         })
                     }
 
                 }
                 console.log(newsOutput);
+                var mensagem = "";
 
-                for (var i = 0; i < newsOutput.lenght; i++) {
+                for (var i = 0; i < newsOutput.length; i++) {
                     title = newsOutput[i].title;
-                    descr = newsOutput[i].description;
+                    descr = newsOutput[i].descr;
                     url = newsOutput[i].url;
+
+                    mensagem += `${title} <br> <br>
+                    ${descr} <br> <br>
+                    ${url}`
                 }
-                tituloOutput.innerHTML = title;
-                descrOutput.innerHTML = descr;
-                urlOutput.innerHTML = url;
+                tituloOutput.innerHTML = mensagem
+                // descrOutput.innerHTML = descr;
+                // urlOutput.innerHTML = url;
 
                 // console.log(title)
                 console.log(title, descr, url);

@@ -23,7 +23,7 @@
     <div class="form-img">
     </div>
     <div class="form">
-      <form>
+      <!-- <form> -->
         <div class="form-header">
           <div class="title">
             <h1>Preencha todos os campos para acessar nossa Dashboard</h1>
@@ -88,7 +88,7 @@
             </div>
           </div>
         </div>
-      </form>
+      <!-- </form> -->
     </div>
   </div>
 </body>
@@ -196,7 +196,7 @@
       cpfVar == "" ||
       telefoneVar == "" ||
       senhaVar == "" ||
-      confirmSenhaVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       error.innerHTML = `<span style="color: red;">Todos os campos são obrigatórios</span>`;
     }
@@ -223,8 +223,8 @@
           alert("Cadastro realizado com sucesso! Aguarde que você será direcionado para a página de login...");
 
           setTimeout(() => {
-            window.location = "questionario.html";
-          }, "2000");
+            window.location.href = "questionario.html";
+          }, 1000);
         } else {
           alert("Ocorreu um erro ao realizar o cadastro, tente novamente!");
           throw "Houve um erro tentando realizar o cadastro!"
