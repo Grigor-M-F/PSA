@@ -78,9 +78,9 @@ function objetivo() {
     var gordura = 0.20 * consumo_diario / 9;
     var carboidrato = (consumo_diario - ((proteina * 4) + (gordura * 9))) / 4;
 
-    console.log(proteina)
-    console.log(gordura)
-    console.log(carboidrato)
+    console.log(proteina);
+    console.log(gordura);
+    console.log(carboidrato);
 
     const iptProteina = document.getElementById('iptProteina');
     iptProteina.value = `${parseInt(proteina)} g`;
@@ -92,19 +92,19 @@ function objetivo() {
     iptCarboidrato.value = `${parseInt(carboidrato)} g`;
 
 
-    fetch("/usuarios/info", {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({
+    // fetch("/usuarios/info", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-type": "application/json"
+    //     },
+    //     body: JSON.stringify({
 
-        }), 
-    }).then(function(response) {
-        response.json().then(response => {
-            console.log(response)
-        })
-    })
+    //     }), 
+    // }).then(function(response) {
+    //     response.json().then(response => {
+    //         console.log(response)
+    //     })
+    // })
 
 }
 
