@@ -218,6 +218,14 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
+          resposta.json()
+          .then(resultado => {
+            // console.log(resultado)
+            sessionStorage.ID_USUARIO = resultado.insertId;
+          })
+          .catch(erro => {
+            console.log(erro);
+          })
           alert("Cadastro realizado com sucesso! Aguarde que você será direcionado para a página de login...");
 
           setTimeout(() => {

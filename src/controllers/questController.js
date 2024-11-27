@@ -12,9 +12,7 @@ function enviar(req, res) {
     var tmb = req.body.tmbServer;
     var objetivo = req.body.objetivoServer;
     var temp_obj = req.body.obj_tempServer;
-    var fkUsuario = req.body.nomeServer;
-
-    console.log(velocidade)
+    var fkUsuario = req.body.idServer;
 
     if (forca == undefined) {
         res.status(400).send("Sua força está undefined!");
@@ -34,9 +32,10 @@ function enviar(req, res) {
         res.status(400).send("velocidade está undefined")
     } else if (objetivo == undefined) {
         res.status(400).send("velocidade está undefined")
-    } else if (temp_obj) {
+    } else if (temp_obj == undefined) {
         res.status(400).send("velocidade está undefined")
     } else {
+        console.log(req.body)
 
         questModel.adicionarQuest(forca, resistencia, velocidade, recuperacao, lesao, saudeMental, fadiga, tmb, objetivo, temp_obj, fkUsuario)
             .then(

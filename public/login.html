@@ -21,7 +21,7 @@
         <div class="form-img">
         </div>
         <div class="form">
-            <form>
+            <!-- <form> -->
                 <div class="form-header">
                     <div class="title">
                         <h1>Acesse a nossa página</h1>
@@ -55,7 +55,7 @@
                 <div class="button">
                     <button onclick="autenticar()">Entrar</button>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
 
@@ -97,9 +97,9 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.EMAIL_USUARIO = json[0].email;
+                    sessionStorage.NOME_USUARIO = json[0].nome;
+                    sessionStorage.ID_USUARIO = json[0].idUser;
 
                     setTimeout(function () {
                         window.location.href = "./dashboard/dashboard.html";

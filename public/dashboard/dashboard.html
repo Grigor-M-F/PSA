@@ -47,29 +47,22 @@
             <div class="kpitext" id="kpitext" style="display: block;">
                 <div class="kpicontainer" id="kpicontainer">
                     <h1>Seu gasto Energético diário</h1>
-                    <p>Sua taxa Metabolica Basal, mais o seu Nível de Atividade</p>
-
 
                     <h2 id="tmbValor"></h2>
 
-                    <canvas id="kpi"></canvas>
                 </div>
                 <div class="kpicontainer">
-                    <h1>Você está a <span id="obj_temp"></span> do <span id="objetivo"></span></h1>
+                    <h1>Você está a <span id="obj_temp"></span> dias do <span id="obj"></span></h1>
 
                     <h2 id="objetivo"></h2>
 
-                    <canvas id="kpi"></canvas>
                 </div>
                 <div class="kpicontainer">
                     <h2>Média de calorias dos meus usuários</h2>
-                    <span id="media"></span>
+                    <span id="mediasite"></span>
                 </div>
             </div>
             <div class="kpiGrafico" id="graficoKpi" style="display: block;">
-                <div class="kpiBarra">
-                    <canvas id="kpiBarra"></canvas>
-                </div>
                 <div class="kpiHistoriograma">
                     <canvas id="kpiHistoriograma"></canvas>
                 </div>
@@ -93,52 +86,97 @@
 <script>
     user.innerHTML = sessionStorage.NOME_USUARIO;
 
-    var tmb = 0;
+    var tmb1 = 0;    
     var diasForObj = 0;
+    var chegada, tempoObjetivo;
+    var objetivo1 = "";
+    var mediaTotal = 0;
+    var forte, resis, recupe, fadi, lesao1, saude, velo;
+    var nomeUser, tmb_total_user;
+    var dados_nome = [];
+    var dados_tmb = [];
 
 
-
-    fetch(`http://localhost:3333/dash/dados_kpi1`, {
+    fetch(`http://localhost:3333/dash/dados_kpi1/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         }
     }).then(res => res.json()).then((res) => {
         console.log(res);
-        tmb = res.tmb;
-        tmbValor.innerHTML = `${tmb}`
+        tmb1 = res[0].tmb;
+        tmbValor.innerHTML = `${tmb1}`
     })
 
-    fetch(`http://localhost:3333/dash/dados_kpi2`, {
+    fetch(`http://localhost:3333/dash/dados_kpi2/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         }
     }).then(res => res.json()).then((res) => {
         console.log(res);
-        chegada = res.chegada;
-        tempoObjetivo = res.temp_obj;
+        diasForObj = res[0].dias;
+        obj_temp.innerHTML = diasForObj;
 
     })
 
-    fetch(`http://localhost:3333/dash/dados_kpi3`, {
+
+    fetch(`http://localhost:3333/dash/dados_kpi3/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         }
     }).then(res => res.json()).then((res) => {
         console.log(res);
-        objetivo = res.objetivo
+        objetivo1 = res[0].Meta;
+        obj.innerHTML = objetivo1
+    })
 
+    fetch(`http://localhost:3333/dash/dados_kpi4`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
+        mediaTotal = res[0].media;
+        mediasite.innerHTML = mediaTotal
     })
 
 
+    fetch(`http://localhost:3333/dash/trazer_dados/${sessionStorage.ID_USUARIO}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
+        forte = res[0].Forca;
+        resis = res[0].resistencia;
+        velo = res[0].Velocidade;
+        fadi = res[0].Fadiga;
+        recupe = res[0].recuperacao;
+        saudeMental = res[0].saude;
+        lesao1 = res[0].lesao;
+        
+    })
 
+    fetch(`http://localhost:3333/dash/trazer_dados2`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
 
-
-
-
-
+        for(var i=0; i < 10; i++){
+            nomeUser = res[i].nome;
+            tmb_total_user = res[i].tmb;
+            dados_nome.push(nomeUser)
+            dados_tmb.push(tmb_total_user)
+        }
+        
+    })
 
 
     function grafico() {
@@ -149,10 +187,10 @@
         var ctx = document.getElementById("myRadar").getContext("2d");
 
         var data = {
-            labels: ['Velocidade', 'Resistência', 'Fadiga', 'Recuperação', 'Saúde Mental', 'Lesão'],
+            labels: ['Velocidade', 'Resistência', 'Fadiga', 'Recuperação', 'Saúde Mental', 'Lesão', 'Força'],
             datasets: [{
                 label: 'Radar de Características',
-                data: [7, 6, 5, 8, 7, 8],
+                data: [`${velo}`, `${resis}`, `${fadi}`, `${recupe}`, `${saudeMental}`, `${lesao1}`, `${forte}`],
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
@@ -218,10 +256,10 @@
     var barChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Pessoa A', 'Pessoa B', 'Pessoa C', 'Pessoa D', 'Pessoa E'],
+            labels: [dados_nome[0], dados_nome[1], dados_nome[2], dados_nome[3], dados_nome[4], dados_nome[5], dados_nome[6], dados_nome[7], dados_nome[8]],
             datasets: [{
                 label: 'Metabolismo Basal (kcal/dia)',
-                data: [1800, 2200, 2100, 2500, 2000],
+                data: [dados_tmb[0], dados_tmb[1], dados_tmb[2], dados_tmb[3], dados_tmb[4], dados_tmb[5], dados_tmb[6], dados_tmb[7], dados_tmb[8]],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
@@ -242,37 +280,37 @@
     });
 
 
-    var ctx = document.getElementById("kpiHistoriograma").getContext("2d");
+    // var ctx = document.getElementById("kpiHistoriograma").getContext("2d");
 
-    var histogramChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['1500-1600 kcal', '1600-1700 kcal', '1700-1800 kcal', '1800-1900 kcal', '1900-2000 kcal'],
-            datasets: [{
-                label: 'Número de Pessoas',
-                data: [5, 12, 9, 6, 3],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    beginAtZero: true
-                },
-                y: {
-                    beginAtZero: true
-                }
-            },
-            plugins: {
-                legend: {
-                    position: 'top'
-                }
-            }
-        }
-    });
+    // var histogramChart = new Chart(ctx, {
+    //     type: 'bar',
+    //     data: {
+    //         labels: ['1500-1600 kcal', '1600-1700 kcal', '1700-1800 kcal', '1800-1900 kcal', '1900-2000 kcal'],
+    //         datasets: [{
+    //             label: 'Número de Pessoas',
+    //             data: [5, 12, 9, 6, 3],
+    //             backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    //             borderColor: 'rgba(54, 162, 235, 1)',
+    //             borderWidth: 1
+    //         }]
+    //     },
+    //     options: {
+    //         responsive: true,
+    //         scales: {
+    //             x: {
+    //                 beginAtZero: true
+    //             },
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         },
+    //         plugins: {
+    //             legend: {
+    //                 position: 'top'
+    //             }
+    //         }
+    //     }
+    // });
 
     // })
 
