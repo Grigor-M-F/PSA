@@ -1,8 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
-router.post("/form", function (req, res) {
-    usuarioController.registro(req, res);
+var questController = require("../controllers/questController")
+
+router.post("/", function (req, res) {
+    questController.enviar(req, res);
 });
 
 module.exports = router;

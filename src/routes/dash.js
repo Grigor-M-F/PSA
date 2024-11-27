@@ -8,9 +8,9 @@ router.get("/trazer_dados",  function (req, res){
   dashController.trazer_dados(req,res);
 })
 
-// router.get("/trazer_dados2",  function (req, res){
-//   dashController.trazer_dados2(req,res);
-// })
+router.get("/trazer_dados2",  function (req, res){
+  dashController.trazer_dados2(req,res);
+})
 
 router.get("/dados_kpi1",  function (req, res){
   dashController.dados_kpi1(req,res);

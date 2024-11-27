@@ -46,7 +46,7 @@
             <div class="container">
                 <h1>Pesquisa de condição de Saúde</h1>
                 <p>Por favor, preencha está pesquisa de saúde para o seu próprio bem</p>
-                <form>
+                <!-- <form> -->
                     <!-- Força -->
                     <label class="left">Como você avaliaria sua força muscular geral em uma escala de 1 a 10?</label>
                     <input type="range" class="range" id="iptForcaEscala" min="1" max="10" value="6" oninput="range()">
@@ -131,9 +131,9 @@
                     </div>
                     
                     <div class="button">
-                        <button onclick="form()">Enviar</button>
+                        <button onclick="enviar()">Enviar</button>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
         </section>
 
@@ -163,7 +163,7 @@
 
 <script>
 
-    function form() {
+    function enviar() {
         var forca = iptForcaEscala.value;
         var resistencia = iptResisEscala.value;
         var velocidade = iptVeloEscala.value;
@@ -213,8 +213,10 @@
             obj_tempBD = 365;
         }
 
+        console.log(objetivo)
 
-        fetch("/quest/form", {
+
+        fetch("http://localhost:3333/quest/", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -232,7 +234,7 @@
                 fadigaServer: fadiga,
                 tmbServer: tmb,
                 objetivoServer: objetivo,
-                obj_tempServer: obj_temp
+                obj_tempServer: obj_tempBD
             })
         })
         .then(function (resposta) {
@@ -249,7 +251,6 @@
 
                     resposta.text().then(texto => {
                         console.error(texto);
-                        finalizarAguardar(texto);
                     });
                 }
 

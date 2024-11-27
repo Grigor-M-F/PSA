@@ -94,31 +94,43 @@
     user.innerHTML = sessionStorage.NOME_USUARIO;
 
     var tmb = 0;
+    var diasForObj = 0;
 
 
-    // fetch(`http://localhost:3333/dash/dados_kpi1`, {
-    //     method: "GET",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     }
-    // }).then(res => res.json()).then((res) => {
-    //     console.log(res);
-    //     tmb = res.tmb;
-    //     tmbValor.innerHTML = `${tmb}`
-    // })
 
-    // var diasForObj = 0;
-    // fetch(`http://localhost:3333/dash/dados_kpi2`, {
-    //     method: "GET",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     }
-    // }).then(res => res.json()).then((res) => {
-    //     console.log(res);
-    //     chegada = res.chegada;
-    //     tempoObjetivo = res.temp_obj;
+    fetch(`http://localhost:3333/dash/dados_kpi1`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
+        tmb = res.tmb;
+        tmbValor.innerHTML = `${tmb}`
+    })
 
-    // })
+    fetch(`http://localhost:3333/dash/dados_kpi2`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
+        chegada = res.chegada;
+        tempoObjetivo = res.temp_obj;
+
+    })
+
+    fetch(`http://localhost:3333/dash/dados_kpi3`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then((res) => {
+        console.log(res);
+        objetivo = res.objetivo
+
+    })
 
 
 

@@ -1,6 +1,6 @@
-var quizzModel = require("../models/questModel");
+var questModel = require("../models/questModel");
 
-function form(req, res) {
+function enviar(req, res) {
 
     var forca = req.body.forcaServer;
     var resistencia = req.body.resistenciaServer;
@@ -13,6 +13,8 @@ function form(req, res) {
     var objetivo = req.body.objetivoServer;
     var temp_obj = req.body.obj_tempServer;
     var fkUsuario = req.body.nomeServer;
+
+    console.log(velocidade)
 
     if (forca == undefined) {
         res.status(400).send("Sua força está undefined!");
@@ -44,8 +46,6 @@ function form(req, res) {
                 }
             ).catch(
                 function (erro) {
-                    // console.log(erro);
-                    // console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
             );
@@ -54,5 +54,5 @@ function form(req, res) {
 }
 
 module.exports = {
-    form
+    enviar
 }
