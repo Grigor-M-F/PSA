@@ -1,61 +1,57 @@
+body {
+    width: 100%;
+    height: 100dvh;
+}
+
 header {
     height: 100px;
     width: 100%;
-    background: var(--cor--primaria);
+    background-color: var(--cor--primaria);
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0px 5px 5px rgba(255, 255, 255, 1);
 }
-
 .logo {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-.logo img {
+.logo a > img{
     height: 30%;
     width: 25%;
 }
-
 nav ul {
     list-style: none;
     display: flex;
     gap: 4rem;
 }
-
-nav ul li {
+nav ul li{
     position: relative;
 }
-
 nav ul li a {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
     display: block;
+    letter-spacing: 3px;
     color: black;
 }
-
 .dropdown {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0%;
+    left: 0;
     margin-bottom: 20px;
     transform-origin: center;
 }
-
 .dropdown li {
     width: 150px;
 }
-
 .dropdown li a {
     padding: 10px;
 }
-
 .sub-item {
     gap: 2rem;
 }
@@ -70,13 +66,13 @@ ul li ul {
     background: var(--cor--primaria);
 }
 
-ul li:hover ul,
+ul li:hover > ul,
 ul li ul:hover {
     visibility: visible;
     opacity: 1;
     display: block;
     min-width: 250px;
-    text-align: center;
+    text-align: left;
     padding-top: 20px;
     border-radius: 20px;
     box-shadow: 0px 3px 5px -1px #ccc;
@@ -86,11 +82,12 @@ a {
     text-decoration: none;
 }
 
-a .icone:hover {
+a .icon:hover {
     color: #839ef5;
+    /* transform: rotate(180deg); */
 }
 
-nav ul li:hover .dropdown{
+nav ul li:hover .dropdown {
     display: block;
 }
 
@@ -105,12 +102,10 @@ nav ul li a:hover {
     justify-content: center;
     width: 20%;
 }
-
 .b a {
     margin-left: 40px;
 }
-
-.b a button {
+.b a button{
     padding: auto;
     width: 120px;
     height: 30px;
@@ -121,19 +116,17 @@ nav ul li a:hover {
     font-weight: 600;
     transition: all 0.4s;
 }
-
-.b a button:hover {
+.b a button:hover{
     background-color: var(--cor--secundaria);
     transform: scale(1.1) translateX(5px);
     cursor: pointer;
 }
 
-.news {
-    width: 100%;
-    height: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
 }
 
 .content {
@@ -142,79 +135,9 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
-}
-
-.content .frase-news {
-    width: 25%;
-    height: 60%;
-}
-
-.content .frase-news h1 {
-    font-size: 3rem;
-}
-
-.img-news {
-    width: 50%;
-    height: 100%;
-}
-
-.img-news img {
-    width: 100%;
-    height: 100%;
-
-}
-
-
-.search {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    width: 300px;
-    margin-top: 30px;
-    padding: 10px;
-    border-radius: 20px;
-    background: #96c8f7;
-    box-shadow: 0px 3px 5px #ccc;
-}
-
-.search-txt {
-    border: none;
-    background: none;
-    outline: none;
-    color: black;
-    font-size: 1rem;
-    background: transparent;
-}
-
-.search-box img {
-    width: 40px;
-    height: 40px;
-}
-
-.output-search {
-    width: 100%;
-    height: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-}
-
-.output {
-    width: 100%;
-    height: 200px;
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
+    gap: 20px;
+    margin-top: 10px;
 }
 
 .content article {
@@ -224,14 +147,11 @@ nav ul li a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.content article h1 {
+.content article h2 {
     color: #007BFF;
     margin-bottom: 10px;
 }
 
-/* .tituloOutput {
-    text-align: center;
-} */
 
 footer {
     display: flex;
@@ -259,7 +179,6 @@ footer .contato{
     align-items: center;
     margin-left: 30px;
 }
-
 
 footer .contato span {
     font-size: 1.3rem;

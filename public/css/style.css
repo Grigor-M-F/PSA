@@ -448,3 +448,16 @@ footer .contato{
     align-items: center;
     margin-left: 30px;
 }
+
+footer .contato span {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+footer .contato img {
+    margin-left: 6px;
+}
+
+footer .contato span:hover {
+    color: #839ef5;
+}

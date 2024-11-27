@@ -59,13 +59,27 @@
             </div>
         </section>
         <section class="output-search">
-            <div class="output">
-                <h1 id="tituloOutput"></h1>
-                <p id="descrOutput"></p>
-                <p id="urlOutput"></p>
-            </div>
+                <article class="output">
+                    <h1 id="tituloOutput"></h1>
+                    <p id="descrOutput"></p>
+                    <!-- <p id="urlOutput"></p> -->
+                </article>
         </section>
-
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="">Alimentação</a></li>
+                </ul>
+            </nav>
+            <div class="contato">
+                <span>Contato</span>
+                <img src="./assets/icon/facebook.png" alt="Icone do facebook">
+                <img src="./assets/icon/instagrampsa.png" alt="Icone do Instagram">
+                <img src="./assets/icon/linkedin.png" alt="Icone do linkedin">
+            </div>
+        </footer>
     </main>
     <!-- <script src="../public/js/news.js"></script> -->
 
@@ -75,7 +89,10 @@
 
 <script>
     var newsOutput = [];
-    var title, descr, url;
+    var title1 = [];
+    var descr1 = [];
+
+    var titlepush, descrpush;
 
     function search() {
         var searchVar = iptSearch.value;
@@ -97,7 +114,7 @@
             }),
         }).then(function (response) {
             response.json().then(function (data) {
-            console.log(data)
+                console.log(data)
 
                 for (var i = 0; i < 10; i++) {
                     // var title = response.title[i];
@@ -115,15 +132,23 @@
                 var mensagem = "";
 
                 for (var i = 0; i < newsOutput.length; i++) {
-                    title = newsOutput[i].title;
-                    descr = newsOutput[i].descr;
-                    url = newsOutput[i].url;
+                    titlepush = newsOutput[i].title;
+                    descrpush = newsOutput[i].descr;
+                    // url = newsOutput[i].url;
 
-                    mensagem += `${title} <br> <br>
-                    ${descr} <br> <br>
-                    ${url}`
+                    title1.push(titlepush);
+                    descr1.push(descrpush)
+
+                    // document.getElementById('output').innerHTML += ''
+                    document.getElementById('tituloOutput').innerHTML += `${title1[i]} <br>`;
+                    document.getElementById('descrOutput').innerHTML += `${descr1[i]} <br> <br>`
+                    // mensagem += `${title} <br> <br>
+                    // ${descr} <br> <br>
+                    // ${url}`
                 }
-                tituloOutput.innerHTML = mensagem
+
+
+                // tituloOutput.innerHTML = mensagem
                 // descrOutput.innerHTML = descr;
                 // urlOutput.innerHTML = url;
 
