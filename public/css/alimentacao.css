@@ -1,7 +1,7 @@
-body {
-    width: 100%;
+/* body {
+    width: 100vw;
     height: 100dvh;
-}
+} */
 
 header {
     height: 100px;
@@ -137,7 +137,8 @@ nav ul li a:hover {
     justify-content: center;
     flex-direction: column;
     gap: 20px;
-    margin-top: 10px;
+    margin: 20px;
+    padding: 20px;
 }
 
 .content article {

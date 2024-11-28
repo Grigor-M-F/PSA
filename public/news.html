@@ -29,7 +29,7 @@
                                 Corporal</a></li>
                     </ul> -->
                 </li>
-                <li><a href="">Alimentação</a></li>
+                <li><a href="./alimentacao.html">Alimentação</a></li>
             </ul>
         </nav>
         <div class="b">
@@ -129,19 +129,19 @@
 
                 }
                 console.log(newsOutput);
-                var mensagem = "";
-
-                for (var i = 0; i < newsOutput.length; i++) {
+                var mensagemTi = "";
+                var mensagemDes = ""
+                for (var i = 0; i < 5; i++) {
                     titlepush = newsOutput[i].title;
                     descrpush = newsOutput[i].descr;
                     // url = newsOutput[i].url;
 
-                    title1.push(titlepush);
-                    descr1.push(descrpush)
+                    // title1.push(titlepush);
+                    // descr1.push(descrpush)
 
                     // document.getElementById('output').innerHTML += ''
-                    document.getElementById('tituloOutput').innerHTML += `${title1[i]} <br>`;
-                    document.getElementById('descrOutput').innerHTML += `${descr1[i]} <br> <br>`
+                    document.getElementById('tituloOutput').innerHTML += `${titlepush} <br>`;
+                    document.getElementById('descrOutput').innerHTML += `${descrpush} <br> <br>`
                     // mensagem += `${title} <br> <br>
                     // ${descr} <br> <br>
                     // ${url}`

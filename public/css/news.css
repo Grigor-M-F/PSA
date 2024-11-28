@@ -204,7 +204,7 @@ nav ul li a:hover {
     width: 100%;
     height: 900px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
 }
@@ -217,16 +217,26 @@ nav ul li a:hover {
     text-align: center;
 }
 
+.output h1 {
+    margin: 8px;
+}
+
+.output p {
+    margin: 8px;
+}
+
 .content article {
     background: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
 }
 
 .content article h1 {
     color: #007BFF;
     margin-bottom: 10px;
+    font-size: 1.4rem;
 }
 
 /* .tituloOutput {

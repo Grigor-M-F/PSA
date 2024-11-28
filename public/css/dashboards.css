@@ -68,7 +68,7 @@ header {
 .kpi {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   /* flex-direction: column; */
 }
 
@@ -94,6 +94,11 @@ header {
   width: 100%;
   height: 400px;
   padding: 20px;
+}
+
+.kpihistori {
+  width: 100%;
+  margin-left: 600px;
 }
 
 .kpiHistoriograma > canvas {

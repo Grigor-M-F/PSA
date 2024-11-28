@@ -41,6 +41,7 @@ CREATE TABLE if not exists quest (
     tmb int,
     objetivo varchar(30),
     temp_obj int,
+    chegada date,
 	fkUsuario int,
 	CONSTRAINT fkUserQuest FOREIGN KEY (fkUsuario) REFERENCES cadastro (idUser)
 );

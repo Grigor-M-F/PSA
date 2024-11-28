@@ -38,12 +38,14 @@
                 </button>
             </div>
             <div class="btn-logout" onclick="limparSessao()">
-                <a href="../index.html"><h3>Sair</h3></a>
+                <a href="../index.html">
+                    <h3>Sair</h3>
+                </a>
             </div>
         </div>
     </header>
     <main>
-        <section class="kpi">
+        <div class="kpi">
             <div class="kpitext" id="kpitext" style="display: block;">
                 <div class="kpicontainer" id="kpicontainer">
                     <h1>Seu gasto Energético diário</h1>
@@ -62,13 +64,15 @@
                     <span id="mediasite"></span>
                 </div>
             </div>
+        </div>
+        <div class="kpihistori">
             <div class="kpiGrafico" id="graficoKpi" style="display: block;">
                 <div class="kpiHistoriograma">
                     <canvas id="kpiHistoriograma"></canvas>
                 </div>
             </div>
-        </section>
-        <section class="grafico">
+        </div>
+        <div class="grafico">
             <div class="dash" id="dashPsa" style="display: none;">
                 <div id="myRadarChart">
                     <canvas id="myRadar" width="400" height="400"></canvas>
@@ -76,7 +80,7 @@
 
             </div>
 
-        </section>
+        </div>
     </main>
 </body>
 
@@ -86,7 +90,7 @@
 <script>
     user.innerHTML = sessionStorage.NOME_USUARIO;
 
-    var tmb1 = 0;    
+    var tmb1 = 0;
     var diasForObj = 0;
     var chegada, tempoObjetivo;
     var objetivo1 = "";
@@ -97,7 +101,7 @@
     var dados_tmb = [];
 
 
-    fetch(`http://localhost:3333/dash/dados_kpi1/${sessionStorage.ID_USUARIO}`, {
+    fetch(`http://localhost:8080/dash/dados_kpi1/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -108,7 +112,7 @@
         tmbValor.innerHTML = `${tmb1}`
     })
 
-    fetch(`http://localhost:3333/dash/dados_kpi2/${sessionStorage.ID_USUARIO}`, {
+    fetch(`http://localhost:8080/dash/dados_kpi2/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -121,7 +125,7 @@
     })
 
 
-    fetch(`http://localhost:3333/dash/dados_kpi3/${sessionStorage.ID_USUARIO}`, {
+    fetch(`http://localhost:8080/dash/dados_kpi3/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -132,7 +136,7 @@
         obj.innerHTML = objetivo1
     })
 
-    fetch(`http://localhost:3333/dash/dados_kpi4`, {
+    fetch(`http://localhost:8080/dash/dados_kpi4`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -144,7 +148,7 @@
     })
 
 
-    fetch(`http://localhost:3333/dash/trazer_dados/${sessionStorage.ID_USUARIO}`, {
+    fetch(`http://localhost:8080/dash/trazer_dados/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -158,10 +162,10 @@
         recupe = res[0].recuperacao;
         saudeMental = res[0].saude;
         lesao1 = res[0].lesao;
-        
+
     })
 
-    fetch(`http://localhost:3333/dash/trazer_dados2`, {
+    fetch(`http://localhost:8080/dash/trazer_dados2`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -169,13 +173,17 @@
     }).then(res => res.json()).then((res) => {
         console.log(res);
 
-        for(var i=0; i < 10; i++){
+        for (var i = 0; i < res.length; i++) {
             nomeUser = res[i].nome;
             tmb_total_user = res[i].tmb;
             dados_nome.push(nomeUser)
             dados_tmb.push(tmb_total_user)
+            console.log(nomeUser)
         }
-        
+
+
+        plotarGrafico()
+
     })
 
 
@@ -251,33 +259,38 @@
     //     document.getElementById("kpicontainer").style.display = 'block'
     //     document.getElementById("dashPsa").style.display = 'none'
 
-    var ctx2 = document.getElementById("kpiBarra").getContext("2d");
+    function plotarGrafico() {
+        var ctx2 = document.getElementById("kpiHistoriograma").getContext("2d");
 
-    var barChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [dados_nome[0], dados_nome[1], dados_nome[2], dados_nome[3], dados_nome[4], dados_nome[5], dados_nome[6], dados_nome[7], dados_nome[8]],
-            datasets: [{
-                label: 'Metabolismo Basal (kcal/dia)',
-                data: [dados_tmb[0], dados_tmb[1], dados_tmb[2], dados_tmb[3], dados_tmb[4], dados_tmb[5], dados_tmb[6], dados_tmb[7], dados_tmb[8]],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+        var barChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: dados_nome,
+                datasets: [{
+                    label: 'Metabolismo Basal (kcal/dia)',
+                    data: dados_tmb,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
             },
-            plugins: {
-                legend: {
-                    position: 'top'
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
                 }
             }
-        }
-    });
+        });
+
+    }
+
+
 
 
     // var ctx = document.getElementById("kpiHistoriograma").getContext("2d");
